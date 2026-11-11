@@ -81,6 +81,7 @@ Next.js web frontend. Pages, components, dashboard UX for HR/admin/principal sur
 - [design canvas spread syntax safe](reference_design_canvas_spread_syntax_safe.md) — object spread/rest already proven safe in design/*.jsx; grep before assuming untested.
 
 ## Design-system structure notes
+- [naveya component kit](project_naveya_component_kit.md) / [leave screen pattern](project_naveya_leave_screen_pattern.md) — pre-v3 kit and Register-record pattern, still linked from current notes. Other pre-v3 explorations (Home variants A–F, Peacock tokens, STAFFROOM v2, v2 shell, theme tweaker, experiments) were removed 2026-11-11; see git history at 7a39e3b.
 - [design-canvas conventions](project_design_canvas_conventions.md) — design/*.jsx is Babel-standalone/classic-JSX, no imports, inline styles + `window.G` only.
 - [design dispatch scope](feedback_design_dispatch_scope.md) — code edits inside design/ are in-scope even though "design audits" aren't.
 - [tokens declare real fonts](feedback_tokens_declare_real_fonts.md) — a token file's font fields must be the truth, not aspirational.
@@ -93,6 +94,5 @@ Next.js web frontend. Pages, components, dashboard UX for HR/admin/principal sur
 - [impeccable AI tells](feedback_impeccable_ai_tells.md) — design hook blocks Fraunces/Inter-class fonts + side-tab accent borders; Literata + Public Sans proven.
 - [live reference capture mid-task](feedback_live_reference_capture_midtask.md) — mid-dispatch competitor findings refine, not replace, the brief; re-plan component APIs before more call sites.
 
-## History (pre-v3, superseded — kept for provenance only)
-[naveya token system](project_naveya_token_system.md) (Peacock & Slate, superseded) · [naveya component kit](project_naveya_component_kit.md) · [STAFFROOM v2 build](project_staffroom_v2_build.md) · [theme tweaker via provider overrides](project_theme_tweaker_via_provider_overrides.md) · [ESS content screens](project_ess_content_screens_attendance.md) · [naveya leave screen pattern](project_naveya_leave_screen_pattern.md) · [experiments: console + overview](project_naveya_experiments_console_overview.md) · [v2 shell assembly pass](project_v2_shell_assembly_pass.md).
+## v3 public screens
 - [public & token screens](project_public_token_screens.md) — PUB-01/03/04 in design/v3/pages/public.jsx; PUB-03 renders no identity at all because a bearer token can be forwarded.

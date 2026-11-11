@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Anek+Latin:wght@400;500;600&family=Anek+Devanagari:wght@400;500;600&family=Mukta:wght@400;500;600&display=swap" rel="stylesheet"></helmet>
+<div style="width:1240px;height:828px;display:flex;overflow:hidden;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:14px;background:{{ c.bg }};color:{{ c.ink }};box-sizing:border-box">
+
+  <div style="width:214px;flex:none;display:flex;flex-direction:column;background:{{ c.railBg }};color:{{ c.railInk }};box-sizing:border-box">
+    <div style="padding:20px 18px 18px;border-bottom:1px solid rgba(255,255,255,.09)">
+      <div style="font-family:'Anek Latin',sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;line-height:1">Naveya</div>
+      <div style="font-family:'Anek Devanagari','Mukta',sans-serif;font-weight:400;font-size:15px;line-height:22px;opacity:.62;margin-top:1px">नवेया · एचआरएमएस</div>
+    </div>
+    <div style="padding:14px 10px 10px;display:flex;flex-direction:column;gap:1px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;opacity:.6;padding:4px 10px 8px">Session 2026–27 · Term 2</div>
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="9">
+        <div style="display:flex;align-items:center;gap:11px;padding:7px 10px;font-size:13.5px;background:{{ n.bg }};color:{{ n.fg }};font-weight:{{ n.fw }};box-shadow:{{ n.rule }}">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.66;width:12px;text-align:center">{{ n.mark }}</span><span style="flex:1">{{ n.label }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;opacity:.6">{{ n.badge }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="flex:1"></div>
+    <div style="margin:0 18px 16px;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.09)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;opacity:.6;margin-bottom:9px">Muster marks</div>
+      <div style="display:flex;flex-wrap:wrap;gap:7px 12px">
+        <sc-for list="{{ legend }}" as="g" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;opacity:.75">
+            <span style="width:15px;height:15px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:{{ g.bg }};color:{{ g.fg }};box-shadow:{{ g.ring }}">{{ g.t }}</span>{{ g.label }}
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column;box-sizing:border-box">
+    <div style="height:50px;flex:none;display:flex;align-items:center;gap:10px;padding:0 22px;border-bottom:1px solid color-mix(in srgb, currentColor 12%, transparent)">
+      <span style="font-size:12.5px;opacity:.62">Attendance</span><span style="opacity:.45">›</span><span style="font-size:12.5px;font-weight:500">Monthly muster</span>
+      <div style="flex:1"></div>
+      <div style="display:flex;align-items:center;gap:7px;padding:5px 10px;border:1px solid color-mix(in srgb, currentColor 15%, transparent);font-size:12.5px"><span style="opacity:.62">Campus</span><span style="font-weight:500">Aravali</span><span style="opacity:.6;font-size:9px">▾</span></div>
+      <div style="display:flex;align-items:center;gap:7px;padding:6px 10px;font-size:12px;font-weight:500;background:{{ c.accentSoft }};color:{{ c.accent }}"><span style="width:5px;height:5px;background:currentColor"></span>Open · closes 31 Aug</div>
+      <button style="border:0;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;padding:8px 15px;background:{{ c.action }};color:{{ c.onAction }}">Freeze &amp; push to payroll</button>
+    </div>
+
+    <div style="flex:none;padding:20px 22px 16px;display:flex;align-items:flex-end;gap:26px;border-bottom:2px solid {{ c.accent }}">
+      <div style="flex:1;min-width:0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;opacity:.62">Muster roll · 26 working days · 5 declared holidays</div>
+        <div style="font-family:'Anek Latin',sans-serif;font-size:34px;font-weight:600;letter-spacing:-0.022em;line-height:40px;margin-top:4px">August 2026</div>
+        <div style="display:flex;align-items:baseline;gap:9px;margin-top:1px">
+          <span style="font-family:'Anek Devanagari','Mukta',sans-serif;font-size:15px;line-height:23px;opacity:.62">उपस्थिति पंजी</span>
+          <span style="opacity:.45">।</span>
+          <span style="font-size:12.5px;opacity:.62">Term 2 · Independence Day and Raksha Bandhan marked H</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:26px;text-align:right;flex:none">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.62">Attendance</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:34px;line-height:42px;letter-spacing:-0.02em;font-feature-settings:'tnum' 1">96.4<span style="font-size:19px;opacity:.6">%</span></div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.62">LOP days</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:34px;line-height:42px;letter-spacing:-0.02em;font-feature-settings:'tnum' 1;color:{{ c.danger }}">18</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.62">Uncovered</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:34px;line-height:42px;letter-spacing:-0.02em;font-feature-settings:'tnum' 1;color:{{ c.brass }}">4</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1;min-height:0;display:flex;background:{{ c.paper }};box-sizing:border-box">
+      <div style="width:24px;flex:none;border-right:2px solid {{ c.accent }};background:{{ c.gutter }};box-sizing:border-box"></div>
+      <div style="flex:1;min-width:0;padding:0 0 0 1px;box-sizing:border-box">
+
+        <div style="display:grid;grid-template-columns:194px 34px repeat(31, 19px) 36px 32px 32px 60px;height:42px;align-items:end;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent);font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;box-sizing:border-box">
+          <div style="padding:0 8px 8px 10px;opacity:.62;font-weight:600">Staff member</div>
+          <div style="padding:0 4px 8px;opacity:.62;font-weight:600">Cl</div>
+          <sc-for list="{{ days }}" as="d" hint-placeholder-count="31">
+            <div style="padding-bottom:6px;text-align:center;background:{{ d.headBg }};color:{{ d.headFg }};height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;box-sizing:border-box">
+              <span style="font-size:8px;opacity:.66;letter-spacing:0">{{ d.dow }}</span>
+              <span style="font-size:10px;font-weight:600;letter-spacing:0">{{ d.n }}</span>
+            </div>
+          </sc-for>
+          <div style="padding:0 6px 8px;text-align:right;opacity:.62;font-weight:600">P</div>
+          <div style="padding:0 6px 8px;text-align:right;opacity:.62;font-weight:600">A</div>
+          <div style="padding:0 6px 8px;text-align:right;opacity:.62;font-weight:600">L</div>
+          <div style="padding:0 10px 8px 6px;text-align:right;opacity:.62;font-weight:600">Payable</div>
+        </div>
+
+        <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+          <div>
+            <div style="height:26px;display:flex;align-items:center;gap:9px;padding:0 10px;background:{{ c.band }};font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;opacity:.66;box-sizing:border-box">
+              <span>{{ g.name }}</span><span style="opacity:.62">{{ g.count }}</span>
+            </div>
+            <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:194px 34px repeat(31, 19px) 36px 32px 32px 60px;height:34px;align-items:center;border-bottom:1px solid color-mix(in srgb, currentColor 8%, transparent);background:{{ r.rowBg }};box-sizing:border-box">
+                <div style="padding:0 8px 0 10px;min-width:0;box-sizing:border-box">
+                  <div style="font-size:13px;font-weight:500;line-height:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</div>
+                  <div style="font-size:10.5px;opacity:.62;line-height:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.role }}</div>
+                </div>
+                <div style="padding:0 4px;box-sizing:border-box">
+                  <span style="display:inline-flex;width:21px;height:21px;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;background:{{ r.chipBg }};color:{{ r.chipFg }}">{{ r.cl }}</span>
+                </div>
+                <sc-for list="{{ r.marks }}" as="m" hint-placeholder-count="31">
+                  <div style="height:34px;display:flex;align-items:center;justify-content:center;background:{{ m.colBg }};box-sizing:border-box">
+                    <span style="width:17px;height:19px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;background:{{ m.bg }};color:{{ m.fg }}">{{ m.t }}</span>
+                  </div>
+                </sc-for>
+                <div style="padding:0 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;font-feature-settings:'tnum' 1;opacity:.75;box-sizing:border-box">{{ r.p }}</div>
+                <div style="padding:0 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;font-feature-settings:'tnum' 1;color:{{ r.aColor }};box-sizing:border-box">{{ r.a }}</div>
+                <div style="padding:0 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;font-feature-settings:'tnum' 1;color:{{ r.lColor }};box-sizing:border-box">{{ r.l }}</div>
+                <div style="padding:0 10px 0 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:600;font-feature-settings:'tnum' 1;border-left:1px solid color-mix(in srgb, currentColor 12%, transparent);box-sizing:border-box">{{ r.payable }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+
+        <div style="display:grid;grid-template-columns:194px 34px repeat(31, 19px) 36px 32px 32px 60px;height:38px;align-items:center;border-top:2px solid color-mix(in srgb, currentColor 55%, transparent);background:{{ c.totalBg }};box-sizing:border-box">
+          <div style="padding:0 8px 0 10px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.66">Present · 214 staff</div>
+          <div></div>
+          <sc-for list="{{ dayTotals }}" as="d" hint-placeholder-count="31">
+            <div style="text-align:center;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-feature-settings:'tnum' 1;color:{{ d.color }};background:{{ d.colBg }};height:38px;display:flex;align-items:center;justify-content:center;box-sizing:border-box">{{ d.v }}</div>
+          </sc-for>
+          <div style="padding:0 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;font-feature-settings:'tnum' 1">5,482</div>
+          <div style="padding:0 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;font-feature-settings:'tnum' 1;color:{{ c.danger }}">18</div>
+          <div style="padding:0 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;font-feature-settings:'tnum' 1;color:{{ c.brass }}">64</div>
+          <div style="padding:0 10px 0 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;font-feature-settings:'tnum' 1;border-left:1px solid color-mix(in srgb, currentColor 12%, transparent)">5,546</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:44px;flex:none;display:flex;align-items:center;gap:14px;padding:0 22px;font-size:11.5px;opacity:.66;border-top:1px solid color-mix(in srgb, currentColor 12%, transparent)">
+      <span>Vacation staff draw no earned leave in term — <span style="font-weight:600;opacity:1">V</span> rows accrue against the session vacation block</span>
+      <span style="opacity:.6">।</span>
+      <span>Biometric + timetable sources reconciled 06:10 IST</span>
+      <div style="flex:1"></div>
+      <span style="font-family:'JetBrains Mono',monospace;letter-spacing:.05em">Δ 3 EXCEPTIONS PENDING</span>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:828},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bahi-light&quot;,&quot;bahi-dark&quot;,&quot;peacock-light&quot;,&quot;peacock-dark&quot;],&quot;default&quot;:&quot;peacock-light&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const P = {
+  bahi: {
+    light: { bg:'#FCFBF8', paper:'#FFFEFC', gutter:'#F6F2EA', railBg:'#231F1A', railInk:'#F2EFE9',
+      ink:'#27221D', accent:'#B63132', accentSoft:'#F3E2DE', action:'#27221D', onAction:'#FCFBF8',
+      brass:'#9C7429', brassSoft:'#F0E7D4', danger:'#C22B2A', band:'rgba(39,34,29,.05)',
+      alt:'rgba(39,34,29,.015)', totalBg:'rgba(39,34,29,.05)', holiday:'rgba(39,34,29,.045)', onMark:'#FFFFFF' },
+    dark: { bg:'#15120F', paper:'#1B1815', gutter:'#221E19', railBg:'#0E0C0A', railInk:'#EEEDEA',
+      ink:'#EEEDEA', accent:'#D86258', accentSoft:'#3A1D1A', action:'#EEEDEA', onAction:'#15120F',
+      brass:'#DEB464', brassSoft:'#2E2617', danger:'#EF675C', band:'rgba(255,255,255,.05)',
+      alt:'rgba(255,255,255,.015)', totalBg:'rgba(255,255,255,.055)', holiday:'rgba(255,255,255,.05)', onMark:'#15120F' }
+  },
+  peacock: {
+    light: { bg:'#F7FAFA', paper:'#FFFFFF', gutter:'#EDF4F4', railBg:'#0F2229', railInk:'#E8F1F1',
+      ink:'#18242A', accent:'#00707C', accentSoft:'#D9EEEF', action:'#00636E', onAction:'#FFFFFF',
+      brass:'#8A6A2F', brassSoft:'#F0E8D8', danger:'#C22B2A', band:'rgba(24,36,42,.05)',
+      alt:'rgba(24,36,42,.015)', totalBg:'rgba(24,36,42,.055)', holiday:'rgba(24,36,42,.045)', onMark:'#FFFFFF' },
+    dark: { bg:'#0D1417', paper:'#131B1F', gutter:'#182227', railBg:'#08100F', railInk:'#E7EDEE',
+      ink:'#E7EDEE', accent:'#28BAC1', accentSoft:'#0E2E30', action:'#28BAC1', onAction:'#08181A',
+      brass:'#DEB464', brassSoft:'#26200F', danger:'#EF675C', band:'rgba(255,255,255,.05)',
+      alt:'rgba(255,255,255,.015)', totalBg:'rgba(255,255,255,.055)', holiday:'rgba(255,255,255,.05)', onMark:'#0D1417' }
+  }
+};
+
+// 1 Aug 2026 is a Saturday
+const DOW = ['S','S','M','T','W','T','F'];
+const HOLIDAYS = [15, 28];
+
+const STAFF = [
+  ['Senior School · Science', [
+    ['Meera Raghunathan','Sr. Teacher — Physics','V',[],[]],
+    ['Kavya Iyer','Teacher — Mathematics','V',[],[11]],
+    ['Joseph Mathew','Lab Assistant','12',[],[]],
+    ['Nikhil Bharadwaj','Teacher — Chemistry','V',[21],[]]
+  ]],
+  ['Senior School · Languages', [
+    ['Fatima Qureshi','Teacher — Hindi','V',[8,9],[]],
+    ['Harpreet Kaur','Teacher — English','V',[12,13,14,18,19,20],[]],
+    ['Ananya Bose','Guest Faculty — Kathak','L',[],[]],
+    ['Devraj Singh','Guest Faculty — Robotics','L',[],[]]
+  ]],
+  ['Administration &amp; Support', [
+    ['Arvind Deshpande','Head of Academics','V',[],[]],
+    ['Rohit Menon','Accounts Executive','12',[],[15]],
+    ['Sunita Bhalla','Transport Coordinator','12',[19],[4,5]],
+    ['Lakshmi Nair','Front Office','12',[],[26]]
+  ]]
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    const variant = this.props.variant || 'peacock-light';
+    const [fam, mode] = variant.split('-');
+    const c = P[fam][mode];
+    const dim = mode === 'dark';
+    const faint = dim ? 'rgba(255,255,255,.28)' : 'rgba(0,0,0,.26)';
+
+    const days = [];
+    for (let n = 1; n <= 31; n++) {
+      const dow = DOW[(n) % 7];
+      const sun = (n % 7) === 1;
+      const hol = HOLIDAYS.indexOf(n) >= 0;
+      days.push({ n: String(n).padStart(2, '0'), dow, sun, hol,
+        headBg: (sun || hol) ? c.holiday : 'transparent',
+        headFg: (sun || hol) ? c.accent : 'inherit' });
+    }
+
+    const chip = { 'V': [c.brassSoft, c.brass], '12': [dim ? 'rgba(255,255,255,.07)' : 'rgba(0,0,0,.055)', dim ? 'rgba(255,255,255,.75)' : 'rgba(0,0,0,.68)'], 'L': [c.accentSoft, c.accent] };
+
+    let idx = 0;
+    const groups = STAFF.map(([name, list]) => ({
+      name, count: list.length + ' staff',
+      rows: list.map(([nm, role, cl, absent, leave]) => {
+        const marks = [];
+        let p = 0, a = 0, l = 0;
+        for (let n = 1; n <= 31; n++) {
+          const d = days[n - 1];
+          const colBg = (d.sun || d.hol) ? c.holiday : 'transparent';
+          if (d.hol) { marks.push({ t:'H', bg:'transparent', fg:c.accent, colBg }); continue; }
+          if (d.sun) { marks.push({ t:'—', bg:'transparent', fg:faint, colBg }); continue; }
+          if (absent.indexOf(n) >= 0) { a++; marks.push({ t:'A', bg:c.danger, fg:c.onMark, colBg }); continue; }
+          if (leave.indexOf(n) >= 0) { l++; marks.push({ t:'L', bg:c.brass, fg:c.onMark, colBg }); continue; }
+          if (cl === 'L' && (n % 3 !== 0)) { marks.push({ t:'·', bg:'transparent', fg:faint, colBg }); continue; }
+          p++; marks.push({ t:'P', bg:'transparent', fg: dim ? 'rgba(255,255,255,.68)' : 'rgba(0,0,0,.62)', colBg });
+        }
+        idx++;
+        return { name: nm, role, cl, marks, p, a: a || '—', l: l || '—',
+          payable: cl === 'L' ? (p + ' lec') : String(p + l),
+          aColor: a ? c.danger : faint, lColor: l ? c.brass : faint,
+          chipBg: chip[cl][0], chipFg: chip[cl][1],
+          rowBg: idx % 2 ? c.alt : 'transparent' };
+      })
+    }));
+
+    const dayTotals = days.map(d => {
+      if (d.hol) return { v:'H', color:c.accent, colBg:c.holiday };
+      if (d.sun) return { v:'—', color:faint, colBg:c.holiday };
+      const v = 205 + ((d.n * 7) % 9);
+      return { v: String(v), color: v < 209 ? c.danger : 'inherit', colBg:'transparent' };
+    });
+
+    const legend = [
+      { t:'P', label:'Present', bg:'transparent', fg:'inherit', ring:'inset 0 0 0 1px rgba(255,255,255,.18)' },
+      { t:'A', label:'Absent', bg:c.danger, fg:c.onMark, ring:'none' },
+      { t:'L', label:'Leave', bg:c.brass, fg:c.onMark, ring:'none' },
+      { t:'H', label:'Holiday', bg:'rgba(255,255,255,.10)', fg:'inherit', ring:'none' },
+      { t:'·', label:'Not scheduled', bg:'transparent', fg:'inherit', ring:'inset 0 0 0 1px rgba(255,255,255,.18)' }
+    ];
+
+    const navItems = [
+      ['◫','Overview',''],['▦','Attendance',''],['◷','Leave ledger',''],['₹','Payroll','1'],
+      ['◈','Statutory',''],['⇄','Substitutions','4'],['◎','Appraisal',''],['✉','Helpdesk','7'],['⌸','Recruitment','']
+    ];
+    const nav = navItems.map(([mark, label, badge]) => {
+      const active = label === 'Attendance';
+      return { mark, label, badge,
+        bg: active ? 'rgba(255,255,255,.07)' : 'transparent',
+        fg: active ? c.accent : 'inherit',
+        fw: active ? 600 : 400,
+        rule: active ? ('inset 2px 0 0 ' + c.accent) : 'none' };
+    });
+
+    return { c, days, groups, dayTotals, legend, nav };
+  }
+}
+
+</script>
+</body>
+</html>

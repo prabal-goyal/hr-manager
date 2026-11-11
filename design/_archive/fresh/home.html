@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home · Naveya</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%2314524A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 25.5h28'/%3E%3Cpath d='M8.5 25.5c3.2 5.6 7.3 8.4 11.5 8.4s8.3-2.8 11.5-8.4'/%3E%3Cpath d='M20 25.5V7.5'/%3E%3Cpath d='M20 7.5c5.6 2.7 8.6 7.5 9.6 14'/%3E%3C/g%3E%3Ccircle cx='11.5' cy='9.5' r='1.9' fill='%2314524A'/%3E%3C/svg%3E">
+<script>
+(function () {
+  var theme = null, lang = null;
+  try {
+    theme = localStorage.getItem("naveya-theme");
+    lang = localStorage.getItem("naveya-lang");
+  } catch (e) { /* storage unavailable */ }
+  var p = new URLSearchParams(location.search);
+  if (p.get("theme")) theme = p.get("theme");
+  if (p.get("lang")) lang = p.get("lang");
+  if (theme !== "dark" && theme !== "light") {
+    theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  if (lang !== "hi" && lang !== "en") lang = "en";
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.lang = lang;
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400;1,7..72,500&family=Public+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --serif: "Literata", "Noto Serif Devanagari", Georgia, serif;
+    --sans: "Public Sans", "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
+
+    --bg: #F6F3EC;
+    --surface: #FDFCF8;
+    --ink: #26231D;
+    --ink-2: #5C564A;
+    --line: #E4DED1;
+    --line-strong: #C9C2B1;
+    --brand: #14524A;
+    --brand-strong: #0E3F39;
+    --on-brand: #F4F1E7;
+    --accent: #9A5617;
+    --accent-tint: #F3E7D3;
+    --good: #2E6B45;
+    --good-tint: #E4EDE2;
+    --focus: #14524A;
+    --shadow: 0 1px 2px rgba(38, 35, 29, 0.05), 0 10px 30px rgba(38, 35, 29, 0.06);
+  }
+  html[data-theme="dark"] {
+    --bg: #141917;
+    --surface: #1C2220;
+    --ink: #ECE7DA;
+    --ink-2: #B2AB9B;
+    --line: #2A322F;
+    --line-strong: #414B46;
+    --brand: #8FC5B8;
+    --brand-strong: #A8D6C9;
+    --on-brand: #0D2823;
+    --accent: #D9A05B;
+    --accent-tint: #33281A;
+    --good: #85C29A;
+    --good-tint: #1E2C22;
+    --focus: #8FC5B8;
+    --shadow: none;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  html[lang="hi"] body { line-height: 1.8; }
+
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+
+  .skip-link {
+    position: absolute;
+    left: 16px; top: -48px;
+    z-index: 10;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 10px 16px;
+    border-radius: 0 0 8px 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 120ms ease;
+  }
+  .skip-link:focus-visible { top: 0; }
+
+  /* ————— Top bar ————— */
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    height: 78px;
+    padding: 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand-lockup { display: flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; }
+  .brand-lockup svg { width: 27px; height: 27px; color: var(--brand); }
+  .wordmark { font-family: var(--serif); font-weight: 500; font-size: 21px; }
+  .topbar-rule { width: 1px; height: 26px; background: var(--line-strong); }
+  .school-name { font-size: 14px; font-weight: 500; color: var(--ink-2); }
+
+  .main-nav { margin-left: auto; display: flex; gap: 6px; }
+  .nav-link {
+    display: inline-block;
+    padding: 9px 15px;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-2);
+    text-decoration: none;
+  }
+  .nav-link:hover { color: var(--ink); background: var(--surface); }
+  .nav-link[aria-current="page"] {
+    color: var(--ink);
+    font-weight: 600;
+    box-shadow: inset 0 -2px 0 var(--brand);
+    border-radius: 8px 8px 0 0;
+  }
+
+  .topbar-controls { margin-left: 26px; display: flex; align-items: center; gap: 12px; }
+  .identity { display: flex; align-items: center; gap: 12px; margin-left: 10px; }
+  .avatar {
+    width: 38px; height: 38px;
+    border-radius: 999px;
+    background: var(--brand);
+    color: var(--on-brand);
+    display: grid;
+    place-items: center;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  .identity-text { line-height: 1.3; }
+  .identity-name { font-size: 14px; font-weight: 600; }
+  .identity-role { font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+  html[lang="hi"] .identity-text { line-height: 1.5; }
+  .signout {
+    margin-left: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+  .signout:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ————— Toggles (shared with login) ————— */
+  .seg {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 3px;
+    gap: 2px;
+    background: var(--surface);
+  }
+  .seg-btn {
+    border: 0;
+    background: transparent;
+    padding: 5px 13px;
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  .seg-btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); font-weight: 600; }
+  .icon-btn {
+    width: 38px; height: 38px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink-2);
+    display: inline-grid;
+    place-items: center;
+    cursor: pointer;
+    flex: none;
+  }
+  .icon-btn:hover { color: var(--ink); border-color: var(--ink-2); }
+  html[data-theme="dark"] .ic-moon { display: none; }
+  html[data-theme="light"] .ic-sun { display: none; }
+
+  /* ————— Page ————— */
+  .page {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 60px 56px 96px;
+  }
+
+  .hero { margin-bottom: 58px; }
+  .hero-date {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 14px;
+  }
+  html[lang="hi"] .hero-date { letter-spacing: 0.03em; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 46px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    margin-bottom: 22px;
+  }
+  html[lang="hi"] .hero h1 { line-height: 1.4; letter-spacing: 0; }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid var(--line-strong);
+    background: var(--good-tint);
+    border-radius: 999px;
+    padding: 9px 18px 9px 14px;
+    font-size: 14.5px;
+  }
+  .chip svg { color: var(--good); flex: none; }
+  .chip-word { font-weight: 600; color: var(--good); }
+  .chip-meta { color: var(--ink-2); }
+
+  .columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 460px;
+    gap: 110px;
+    align-items: start;
+  }
+
+  .overline {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 18px;
+  }
+  html[lang="hi"] .overline { letter-spacing: 0.03em; }
+  .overline .mark-dot { width: 7px; height: 7px; border-radius: 2px; background: var(--accent); flex: none; }
+
+  /* ————— Attention card ————— */
+  .card {
+    max-width: 840px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 34px 38px;
+    box-shadow: var(--shadow);
+  }
+  .card-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 14px; }
+  .card-icon {
+    width: 46px; height: 46px;
+    flex: none;
+    border-radius: 12px;
+    background: var(--accent-tint);
+    color: var(--accent);
+    display: grid;
+    place-items: center;
+  }
+  .card-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 1.3;
+    padding-top: 7px;
+  }
+  html[lang="hi"] .card-title { line-height: 1.5; padding-top: 2px; }
+  .card-body {
+    color: var(--ink-2);
+    font-size: 15.5px;
+    line-height: 1.65;
+    max-width: 58ch;
+    margin-bottom: 18px;
+  }
+  html[lang="hi"] .card-body { line-height: 1.85; }
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 22px;
+    font-size: 13.5px;
+    color: var(--ink-2);
+    margin-bottom: 26px;
+  }
+  .due {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .due svg { flex: none; }
+  .card-actions { display: flex; gap: 12px; }
+  .btn {
+    height: 46px;
+    padding: 0 24px;
+    border-radius: 10px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+  .btn-primary {
+    border: 0;
+    background: var(--brand);
+    color: var(--on-brand);
+    transition: background 120ms ease;
+  }
+  .btn-primary:hover { background: var(--brand-strong); }
+  .btn-primary:focus-visible { outline-color: var(--accent); }
+  .btn-quiet {
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--ink);
+  }
+  .btn-quiet:hover { border-color: var(--ink-2); background: var(--surface); }
+
+  /* ————— Glance rows ————— */
+  .glance-row {
+    padding: 24px 0 26px;
+    border-bottom: 1px solid var(--line);
+  }
+  .glance-row:first-of-type { border-top: 1px solid var(--line); }
+  .glance-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 10px;
+  }
+  html[lang="hi"] .glance-label { letter-spacing: 0.03em; }
+  .glance-value {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums lining-nums;
+    letter-spacing: 0.005em;
+  }
+  html[lang="hi"] .glance-value { line-height: 1.5; }
+  .glance-sub { font-size: 14px; color: var(--ink-2); margin-top: 6px; }
+  .glance-link {
+    display: inline-block;
+    margin-top: 13px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--brand);
+    text-decoration: none;
+  }
+  .glance-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .glance-link .arrow { font-family: var(--sans); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand-lockup" href="home.html">
+    <svg viewBox="0 0 40 40" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 25.5h28"/>
+        <path d="M8.5 25.5c3.2 5.6 7.3 8.4 11.5 8.4s8.3-2.8 11.5-8.4"/>
+        <path d="M20 25.5V7.5"/>
+        <path d="M20 7.5c5.6 2.7 8.6 7.5 9.6 14"/>
+      </g>
+      <circle cx="11.5" cy="9.5" r="1.8" fill="currentColor"/>
+    </svg>
+    <span class="wordmark" data-i18n="wordmark">Naveya</span>
+  </a>
+  <span class="topbar-rule" aria-hidden="true"></span>
+  <span class="school-name" data-i18n="school">Sunrise Public School</span>
+
+  <nav class="main-nav" data-i18n-aria="navAria" aria-label="Main">
+    <a class="nav-link" href="home.html" aria-current="page" data-i18n="navHome">Home</a>
+    <a class="nav-link" href="#" data-i18n="navAttendance">Attendance</a>
+    <a class="nav-link" href="#" data-i18n="navLeave">Leave</a>
+    <a class="nav-link" href="#" data-i18n="navPay">Pay</a>
+    <a class="nav-link" href="#" data-i18n="navDocs">Documents</a>
+  </nav>
+
+  <div class="topbar-controls">
+    <div class="seg" role="group" aria-label="Language / भाषा">
+      <button type="button" class="seg-btn" data-set-lang="en" lang="en">English</button>
+      <button type="button" class="seg-btn" data-set-lang="hi" lang="hi">हिंदी</button>
+    </div>
+    <button type="button" class="icon-btn" id="themeBtn" data-i18n-aria="themeAria" aria-label="Switch to dark theme">
+      <svg class="ic-moon" width="17" height="17" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16.5 12.2A7 7 0 0 1 7.8 3.5a7 7 0 1 0 8.7 8.7Z"/>
+      </svg>
+      <svg class="ic-sun" width="17" height="17" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+        <circle cx="10" cy="10" r="4"/>
+        <path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.4 1.4M14.6 14.6 16 16M16 4l-1.4 1.4M5.4 14.6 4 16"/>
+      </svg>
+    </button>
+    <div class="identity">
+      <span class="avatar" aria-hidden="true">AR</span>
+      <span class="identity-text">
+        <span class="identity-name" data-i18n="name">Ananya Rao</span><br>
+        <span class="identity-role"><span data-i18n="role">PGT · Physics</span> · NAV-0142</span>
+      </span>
+    </div>
+    <a class="signout" href="login.html" data-i18n="signout">Sign out</a>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <section class="hero">
+    <p class="hero-date" data-i18n="date">Monday, 10 August 2026</p>
+    <h1 data-i18n="greet">Good morning, Ananya</h1>
+    <p class="chip">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3.5 8.5l3 3 6-6.5"/>
+      </svg>
+      <span class="chip-word" data-i18n="clockedIn">Clocked in</span>
+      <span class="chip-meta" data-i18n="clockMeta">7:42 am · Main gate</span>
+    </p>
+  </section>
+
+  <div class="columns">
+    <section data-i18n-aria="attnAria" aria-label="Needs your response">
+      <h2 class="overline"><span class="mark-dot" aria-hidden="true"></span><span data-i18n="attnOverline">Needs your response</span></h2>
+      <article class="card">
+        <div class="card-head">
+          <span class="card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6.5 3h7.5l4 4v14h-11.5z"/>
+              <path d="M14 3v4h4"/>
+              <path d="M9.5 12.5h5M9.5 16h5"/>
+            </svg>
+          </span>
+          <h3 class="card-title" data-i18n="cardTitle">Police verification certificate</h3>
+        </div>
+        <p class="card-body" data-i18n="cardBody">HR has asked you to submit a renewed police verification certificate — your current one is nearing expiry. It takes only a few minutes; a clear photo or scan is fine.</p>
+        <p class="card-meta">
+          <span data-i18n="cardMeta">Requested by the HR office · Friday, 8 August</span>
+          <span class="due">
+            <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <circle cx="8" cy="8" r="6.2"/>
+              <path d="M8 4.8V8l2.4 1.6"/>
+            </svg>
+            <span data-i18n="due">Submit by Friday, 22 August</span>
+          </span>
+        </p>
+        <div class="card-actions">
+          <button type="button" class="btn btn-primary" data-i18n="btnSubmit">Submit document</button>
+          <button type="button" class="btn btn-quiet" data-i18n="btnView">View request</button>
+        </div>
+      </article>
+    </section>
+
+    <aside data-i18n-aria="glanceAria" aria-label="At a glance">
+      <h2 class="overline" data-i18n="glanceOverline">At a glance</h2>
+
+      <div class="glance-row">
+        <p class="glance-label" data-i18n="leaveLabel">Leave in hand</p>
+        <p class="glance-value" data-i18n="leaveValue">23 days</p>
+        <p class="glance-sub" data-i18n="leaveSub">9 casual · 14 earned</p>
+        <a class="glance-link" href="#"><span data-i18n="leaveLink">Apply for leave</span> <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="glance-row">
+        <p class="glance-label" data-i18n="payLabel">Last payslip · July</p>
+        <p class="glance-value">₹86,412.00</p>
+        <p class="glance-sub" data-i18n="paySub">Net pay, credited Friday, 31 July</p>
+        <a class="glance-link" href="#"><span data-i18n="payLink">View payslip</span> <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="glance-row">
+        <p class="glance-label" data-i18n="holLabel">Upcoming holiday</p>
+        <p class="glance-value" data-i18n="holValue">Independence Day</p>
+        <p class="glance-sub" data-i18n="holSub">Saturday, 15 August · School closed</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script>
+(function () {
+  var dict = {
+    en: {
+      title: "Home · Naveya",
+      skip: "Skip to content",
+      wordmark: "Naveya",
+      school: "Sunrise Public School",
+      navAria: "Main",
+      navHome: "Home",
+      navAttendance: "Attendance",
+      navLeave: "Leave",
+      navPay: "Pay",
+      navDocs: "Documents",
+      name: "Ananya Rao",
+      role: "PGT · Physics",
+      signout: "Sign out",
+      date: "Monday, 10 August 2026",
+      greet: "Good morning, Ananya",
+      clockedIn: "Clocked in",
+      clockMeta: "7:42 am · Main gate",
+      attnAria: "Needs your response",
+      attnOverline: "Needs your response",
+      cardTitle: "Police verification certificate",
+      cardBody: "HR has asked you to submit a renewed police verification certificate — your current one is nearing expiry. It takes only a few minutes; a clear photo or scan is fine.",
+      cardMeta: "Requested by the HR office · Friday, 8 August",
+      due: "Submit by Friday, 22 August",
+      btnSubmit: "Submit document",
+      btnView: "View request",
+      glanceAria: "At a glance",
+      glanceOverline: "At a glance",
+      leaveLabel: "Leave in hand",
+      leaveValue: "23 days",
+      leaveSub: "9 casual · 14 earned",
+      leaveLink: "Apply for leave",
+      payLabel: "Last payslip · July",
+      paySub: "Net pay, credited Friday, 31 July",
+      payLink: "View payslip",
+      holLabel: "Upcoming holiday",
+      holValue: "Independence Day",
+      holSub: "Saturday, 15 August · School closed",
+      themeToDark: "Switch to dark theme",
+      themeToLight: "Switch to light theme"
+    },
+    hi: {
+      title: "होम · नवेया",
+      skip: "सीधे सामग्री पर जाएँ",
+      wordmark: "नवेया",
+      school: "सनराइज़ पब्लिक स्कूल",
+      navAria: "मुख्य",
+      navHome: "होम",
+      navAttendance: "उपस्थिति",
+      navLeave: "छुट्टी",
+      navPay: "वेतन",
+      navDocs: "दस्तावेज़",
+      name: "अनन्या राव",
+      role: "पीजीटी · भौतिकी",
+      signout: "साइन आउट",
+      date: "सोमवार, 10 अगस्त 2026",
+      greet: "सुप्रभात, अनन्या",
+      clockedIn: "उपस्थिति दर्ज",
+      clockMeta: "सुबह 7:42 · मुख्य गेट",
+      attnAria: "आपकी प्रतिक्रिया चाहिए",
+      attnOverline: "आपकी प्रतिक्रिया चाहिए",
+      cardTitle: "पुलिस सत्यापन प्रमाणपत्र",
+      cardBody: "एचआर ने नवीनीकृत पुलिस सत्यापन प्रमाणपत्र जमा करने को कहा है — आपके मौजूदा प्रमाणपत्र की अवधि पूरी होने वाली है। इसमें बस कुछ मिनट लगते हैं; साफ़ फ़ोटो या स्कैन काफ़ी है।",
+      cardMeta: "एचआर कार्यालय का अनुरोध · शुक्रवार, 8 अगस्त",
+      due: "शुक्रवार, 22 अगस्त तक जमा करें",
+      btnSubmit: "दस्तावेज़ जमा करें",
+      btnView: "अनुरोध देखें",
+      glanceAria: "एक नज़र में",
+      glanceOverline: "एक नज़र में",
+      leaveLabel: "उपलब्ध छुट्टियाँ",
+      leaveValue: "23 दिन",
+      leaveSub: "9 आकस्मिक · 14 अर्जित",
+      leaveLink: "छुट्टी के लिए आवेदन करें",
+      payLabel: "पिछली वेतन पर्ची · जुलाई",
+      paySub: "शुद्ध वेतन, शुक्रवार 31 जुलाई को जमा",
+      payLink: "वेतन पर्ची देखें",
+      holLabel: "आगामी अवकाश",
+      holValue: "स्वतंत्रता दिवस",
+      holSub: "शनिवार, 15 अगस्त · विद्यालय बंद",
+      themeToDark: "डार्क थीम पर जाएँ",
+      themeToLight: "लाइट थीम पर जाएँ"
+    }
+  };
+
+  function currentLang() { return document.documentElement.lang === "hi" ? "hi" : "en"; }
+  function currentTheme() { return document.documentElement.dataset.theme === "dark" ? "dark" : "light"; }
+
+  function apply() {
+    var l = currentLang(), d = dict[l];
+    document.title = d.title;
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n");
+      if (d[k] != null) el.textContent = d[k];
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n-aria");
+      if (k === "themeAria") return; // handled below with theme state
+      if (d[k] != null) el.setAttribute("aria-label", d[k]);
+    });
+    var tb = document.getElementById("themeBtn");
+    tb.setAttribute("aria-label", currentTheme() === "dark" ? d.themeToLight : d.themeToDark);
+    document.querySelectorAll("[data-set-lang]").forEach(function (btn) {
+      btn.setAttribute("aria-pressed", btn.getAttribute("data-set-lang") === l ? "true" : "false");
+    });
+  }
+
+  document.querySelectorAll("[data-set-lang]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var l = btn.getAttribute("data-set-lang");
+      document.documentElement.lang = l;
+      try { localStorage.setItem("naveya-lang", l); } catch (e) {}
+      apply();
+    });
+  });
+
+  document.getElementById("themeBtn").addEventListener("click", function () {
+    var t = currentTheme() === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = t;
+    try { localStorage.setItem("naveya-theme", t); } catch (e) {}
+    apply();
+  });
+
+  apply();
+})();
+</script>
+</body>
+</html>

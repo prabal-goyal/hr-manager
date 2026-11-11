@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Naveya — design explorations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#111214;font-family:Figtree,system-ui,sans-serif;color:#ECEDEF}
+  body{display:flex;flex-direction:column}
+  header{flex:0 0 auto;padding:12px 18px 0;border-bottom:1px solid rgba(255,255,255,.09)}
+  .top{display:flex;align-items:baseline;gap:12px;margin-bottom:11px}
+  .brand{font-size:17px;font-weight:700;letter-spacing:-.015em}
+  .sub{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#848B94;letter-spacing:.06em}
+  .note{margin-left:auto;font-size:12px;color:#848B94}
+  .tabs{display:flex;gap:5px;flex-wrap:wrap;padding-bottom:11px}
+  .tab{appearance:none;font:inherit;font-size:12px;font-weight:600;cursor:pointer;
+       border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.045);color:#C4CAD2;
+       padding:7px 12px;border-radius:8px;transition:background .12s cubic-bezier(.25,1,.5,1),color .12s cubic-bezier(.25,1,.5,1)}
+  .tab:hover{background:rgba(255,255,255,.10);color:#fff}
+  .tab[aria-selected="true"]{background:#ECEDEF;color:#111214;border-color:#ECEDEF}
+  .tab:focus-visible{outline:2px solid #7FB3FF;outline-offset:2px}
+  .tab .k{font-family:'JetBrains Mono',monospace;opacity:.62;margin-right:6px}
+  .desc{padding:9px 18px;font-size:12.5px;color:#9AA1AA;border-bottom:1px solid rgba(255,255,255,.07);line-height:1.5}
+  .stage{flex:1;min-height:0;background:#08090A}
+  iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+  @media (prefers-reduced-motion:reduce){.tab{transition:none}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="top">
+      <span class="brand">Naveya — design explorations</span>
+      <span class="sub">EMPLOYEE HOME · 7 DIRECTIONS</span>
+      <span class="note">Each opens standalone. Every screen has its own light/dark + EN/हिंदी toggles.</span>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Design explorations">
+      <button class="tab" role="tab" aria-selected="true"  data-src="v2-ha.html"      data-desc="A · Keka-faithful — white cards on a light canvas, narrow-left / wide-right, two colour-blocked cards, leave rings, illustrated quiet state, arched-colonnade motif. Keeps the peacock palette."><span class="k">A</span>Keka cards</button>
+      <button class="tab" role="tab" aria-selected="false" data-src="v2-hb.html"      data-desc="B · Bento — a grid of deliberately different-sized tiles; large hero tiles earn their size, small satellites around them. Keeps the peacock palette."><span class="k">B</span>Bento</button>
+      <button class="tab" role="tab" aria-selected="false" data-src="v2-hc.html"      data-desc="C · Welcome band — a full-width hero band carrying abstract artwork and the headline figure, then clearly-sectioned cards beneath. Most atmospheric. Keeps the peacock palette."><span class="k">C</span>Welcome band</button>
+      <button class="tab" role="tab" aria-selected="false" data-src="v2-hd.html"      data-desc="D · Warm &amp; human — design system KICKED. Its own palette and type. Approachable, soft, illustration-led, built for a teacher who isn't a power user."><span class="k">D</span>Warm</button>
+      <button class="tab" role="tab" aria-selected="false" data-src="v2-he.html"      data-desc="E · Editorial premium — design system KICKED. Typography as the lead instrument, decisive scale contrast, generous margins, real art direction."><span class="k">E</span>Editorial</button>
+      <button class="tab" role="tab" aria-selected="false" data-src="v2-hf.html"      data-desc="F · Modern tool — design system KICKED. Crisp and precise with vivid colour as signal, engineered data-viz, immaculate micro-detail. Linear/Raycast energy."><span class="k">F</span>Modern tool</button>
+      <button class="tab" role="tab" aria-selected="false" data-src="fresh/home.html"  data-desc="Clean room · HOME — no design system, no reuse of any existing file. Built from the product brief alone, with one instruction: design it, don't dump numbers."><span class="k">CR</span>Clean room · home</button>
+      <button class="tab" role="tab" aria-selected="false" data-src="fresh/login.html" data-desc="Clean room · SIGN IN — same clean-room brief, the sign-in screen."><span class="k">CR</span>Clean room · sign in</button>
+    </div>
+  </header>
+  <div class="desc" id="desc">A · Keka-faithful — white cards on a light canvas, narrow-left / wide-right, two colour-blocked cards, leave rings, illustrated quiet state, arched-colonnade motif. Keeps the peacock palette.</div>
+  <div class="stage"><iframe id="frame" src="v2-ha.html" title="Selected exploration"></iframe></div>
+<script>
+  var tabs = [].slice.call(document.querySelectorAll('.tab'));
+  var frame = document.getElementById('frame');
+  var desc = document.getElementById('desc');
+  function select(tab){
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', String(t === tab)); });
+    frame.src = tab.dataset.src;
+    desc.textContent = tab.dataset.desc;
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ select(t); });
+    t.addEventListener('keydown', function(e){
+      var i = tabs.indexOf(t);
+      if (e.key === 'ArrowRight'){ var n = tabs[(i+1) % tabs.length]; n.focus(); select(n); }
+      if (e.key === 'ArrowLeft'){ var p = tabs[(i-1+tabs.length) % tabs.length]; p.focus(); select(p); }
+    });
+  });
+</script>
+</body>
+</html>

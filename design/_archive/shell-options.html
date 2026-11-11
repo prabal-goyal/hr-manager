@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Naveya — Shell colour directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#15161A;font-family:Figtree,system-ui,sans-serif;color:#EDEEF0;padding:28px}
+  h1{font-size:19px;margin:0 0 4px;font-weight:700;letter-spacing:-.01em}
+  .sub{font-size:13px;color:#9AA0A8;margin:0 0 24px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  .opt{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.10)}
+  .optbar{display:flex;align-items:baseline;gap:9px;padding:0 2px 9px}
+  .optname{font-size:14px;font-weight:700}
+  .optdesc{font-size:12px;color:#9AA0A8}
+  .app{display:flex;height:322px;font-size:13px}
+  /* sidebar */
+  .side{width:150px;flex:0 0 auto;padding:15px 11px;display:flex;flex-direction:column;gap:3px}
+  .wm{font-size:16px;font-weight:800;letter-spacing:-.02em;margin:1px 5px 13px;color:#fff}
+  .nav{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:9px;font-weight:500;font-size:12.5px;color:rgba(255,255,255,.72)}
+  .nav.on{background:rgba(255,255,255,.16);color:#fff;font-weight:600}
+  .dot{width:14px;height:14px;border-radius:4px;background:rgba(255,255,255,.30);flex:0 0 auto}
+  .nav.on .dot{background:rgba(255,255,255,.85)}
+  .spacer{flex:1}
+  .me{display:flex;align-items:center;gap:8px;padding:7px 5px;color:rgba(255,255,255,.75);font-size:11.5px}
+  .av{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:9.5px;font-weight:700;color:#fff}
+  /* main */
+  .main{flex:1;padding:16px 18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+  .hello{font-size:17px;font-weight:700;letter-spacing:-.015em}
+  .meta{font-size:11.5px;margin-top:-9px}
+  .card{border-radius:14px;padding:13px 15px;display:flex;gap:16px;align-items:center}
+  .ringwrap{position:relative;width:64px;height:64px;flex:0 0 auto}
+  .ringtx{position:absolute;inset:0;display:grid;place-items:center;font-size:12.5px;font-weight:700;font-family:'JetBrains Mono',monospace}
+  .tl{flex:1;min-width:0}
+  .tlbar{height:11px;border-radius:6px;display:flex;overflow:hidden;gap:2px}
+  .seg{height:100%}
+  .tlx{display:flex;justify-content:space-between;font-size:9.5px;margin-top:5px;font-family:'JetBrains Mono',monospace}
+  .chips{display:flex;gap:7px;flex-wrap:wrap}
+  .chip{display:flex;align-items:center;gap:5px;padding:4px 10px 4px 6px;border-radius:999px;font-size:11.5px;font-weight:600}
+  .gl{width:17px;height:17px;flex:0 0 auto}
+  .pay{border-radius:14px;padding:11px 15px;display:flex;justify-content:space-between;align-items:center}
+  .paylab{font-size:11.5px;font-weight:600}
+  .payamt{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+<h1>Naveya — four shell directions</h1>
+<p class="sub">Same screen, four brand anchors. Full-personality treatment: saturated shell, vivid data roles, hours-ring, colour timeline, character glyphs.</p>
+<div class="grid">
+
+<!-- A · PLUM INDIGO -->
+<div>
+  <div class="optbar"><span class="optname">A · Plum Indigo</span><span class="optdesc">modern, premium, distinctly not-SaaS-blue</span></div>
+  <div class="opt"><div class="app" style="--shell:#3F2263;--shell2:#4C2C75;--canvas:#FAF8FC;--surf:#fff;--ink:#241A33;--mut:#6B6280;--brand:#6D4AC4;--pres:#17935F;--late:#D2870B;--abs:#D14059;--lv:#7A5AF8;--line:#EBE6F2">
+    <div class="side" style="background:linear-gradient(180deg,var(--shell2),var(--shell))">
+      <div class="wm">Naveya</div>
+      <div class="nav on"><span class="dot"></span>Home</div>
+      <div class="nav"><span class="dot"></span>Attendance</div>
+      <div class="nav"><span class="dot"></span>Leave</div>
+      <div class="nav"><span class="dot"></span>Payslips</div>
+      <div class="spacer"></div>
+      <div class="me"><span class="av" style="background:var(--brand)">AR</span>Ananya Rao</div>
+    </div>
+    <div class="main" style="background:var(--canvas);color:var(--ink)">
+      <div><div class="hello">Good morning, Ananya</div><div class="meta" style="color:var(--mut)">PGT · Sunrise Public School</div></div>
+      <div class="card" style="background:var(--surf);border:1px solid var(--line)">
+        <div class="ringwrap"><svg width="64" height="64"><circle cx="32" cy="32" r="26" fill="none" stroke="#EFEBF6" stroke-width="8"/><circle cx="32" cy="32" r="26" fill="none" stroke="var(--pres)" stroke-width="8" stroke-linecap="round" stroke-dasharray="163 163" stroke-dashoffset="49" transform="rotate(-90 32 32)"/></svg><div class="ringtx" style="color:var(--ink)">7<tspan>h</tspan></div></div>
+        <div class="tl"><div class="tlbar" style="background:#F1EDF7"><span class="seg" style="flex:34;background:var(--pres)"></span><span class="seg" style="flex:8;background:var(--late)"></span><span class="seg" style="flex:22;background:var(--pres)"></span><span class="seg" style="flex:36;background:transparent"></span></div><div class="tlx" style="color:var(--mut)"><span>9:00</span><span>13:00</span><span>17:00</span></div></div>
+      </div>
+      <div class="chips">
+        <span class="chip" style="background:#E4F5EC;color:#0F6E47"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#17935F"/><path d="M6 10.5l2.6 2.5L14 7.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>On time</span>
+        <span class="chip" style="background:#FBEFD9;color:#8A5A05"><svg class="gl" viewBox="0 0 20 20"><ellipse cx="10" cy="12" rx="7" ry="4.6" fill="#D2870B"/><circle cx="15.5" cy="9" r="2.7" fill="#D2870B"/><circle cx="16.4" cy="8.5" r=".7" fill="#fff"/><path d="M3.4 13.6l-1.6 1M5 15.6l-.7 1.5M15 15.6l.7 1.5" stroke="#D2870B" stroke-width="1.4" stroke-linecap="round"/></svg>Late</span>
+        <span class="chip" style="background:#FBE4E8;color:#96223A"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#D14059"/><path d="M7 7l6 6M13 7l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Absent</span>
+        <span class="chip" style="background:#EDE9FE;color:#4B32A8"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#7A5AF8"/><circle cx="7.2" cy="8.6" r="1.2" fill="#fff"/><circle cx="12.8" cy="8.6" r="1.2" fill="#fff"/><path d="M6.6 12.4c1.9 2 4.9 2 6.8 0" stroke="#fff" stroke-width="1.7" fill="none" stroke-linecap="round"/></svg>On leave</span>
+      </div>
+      <div class="pay" style="background:var(--shell);color:#fff"><span class="paylab" style="opacity:.82">July net pay</span><span class="payamt">₹ 68,240.00</span></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- B · TERRACOTTA CLAY -->
+<div>
+  <div class="optbar"><span class="optname">B · Terracotta Clay</span><span class="optdesc">earthy, warm, human — most Indian without kitsch</span></div>
+  <div class="opt"><div class="app" style="--shell:#7E3A2A;--shell2:#94472F;--canvas:#FDF8F5;--surf:#fff;--ink:#33201A;--mut:#7A6459;--brand:#C2603F;--pres:#2F7D5C;--late:#C07A08;--abs:#C0392B;--lv:#8A5CC4;--line:#F1E4DC">
+    <div class="side" style="background:linear-gradient(180deg,var(--shell2),var(--shell))">
+      <div class="wm">Naveya</div>
+      <div class="nav on"><span class="dot"></span>Home</div>
+      <div class="nav"><span class="dot"></span>Attendance</div>
+      <div class="nav"><span class="dot"></span>Leave</div>
+      <div class="nav"><span class="dot"></span>Payslips</div>
+      <div class="spacer"></div>
+      <div class="me"><span class="av" style="background:var(--brand)">AR</span>Ananya Rao</div>
+    </div>
+    <div class="main" style="background:var(--canvas);color:var(--ink)">
+      <div><div class="hello">Good morning, Ananya</div><div class="meta" style="color:var(--mut)">PGT · Sunrise Public School</div></div>
+      <div class="card" style="background:var(--surf);border:1px solid var(--line)">
+        <div class="ringwrap"><svg width="64" height="64"><circle cx="32" cy="32" r="26" fill="none" stroke="#F5E9E2" stroke-width="8"/><circle cx="32" cy="32" r="26" fill="none" stroke="var(--pres)" stroke-width="8" stroke-linecap="round" stroke-dasharray="163 163" stroke-dashoffset="49" transform="rotate(-90 32 32)"/></svg><div class="ringtx" style="color:var(--ink)">7h</div></div>
+        <div class="tl"><div class="tlbar" style="background:#F7EBE4"><span class="seg" style="flex:34;background:var(--pres)"></span><span class="seg" style="flex:8;background:var(--late)"></span><span class="seg" style="flex:22;background:var(--pres)"></span><span class="seg" style="flex:36;background:transparent"></span></div><div class="tlx" style="color:var(--mut)"><span>9:00</span><span>13:00</span><span>17:00</span></div></div>
+      </div>
+      <div class="chips">
+        <span class="chip" style="background:#E3F2EA;color:#1D6146"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#2F7D5C"/><path d="M6 10.5l2.6 2.5L14 7.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>On time</span>
+        <span class="chip" style="background:#FAEDD5;color:#7E5205"><svg class="gl" viewBox="0 0 20 20"><ellipse cx="10" cy="12" rx="7" ry="4.6" fill="#C07A08"/><circle cx="15.5" cy="9" r="2.7" fill="#C07A08"/><circle cx="16.4" cy="8.5" r=".7" fill="#fff"/><path d="M3.4 13.6l-1.6 1M5 15.6l-.7 1.5M15 15.6l.7 1.5" stroke="#C07A08" stroke-width="1.4" stroke-linecap="round"/></svg>Late</span>
+        <span class="chip" style="background:#FAE3E0;color:#8C2A20"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#C0392B"/><path d="M7 7l6 6M13 7l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Absent</span>
+        <span class="chip" style="background:#EFE7F8;color:#5B3A8E"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#8A5CC4"/><circle cx="7.2" cy="8.6" r="1.2" fill="#fff"/><circle cx="12.8" cy="8.6" r="1.2" fill="#fff"/><path d="M6.6 12.4c1.9 2 4.9 2 6.8 0" stroke="#fff" stroke-width="1.7" fill="none" stroke-linecap="round"/></svg>On leave</span>
+      </div>
+      <div class="pay" style="background:var(--shell);color:#fff"><span class="paylab" style="opacity:.82">July net pay</span><span class="payamt">₹ 68,240.00</span></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- C · PEACOCK INK -->
+<div>
+  <div class="optbar"><span class="optname">C · Peacock Ink</span><span class="optdesc">richer, saturated evolution of the teal you picked</span></div>
+  <div class="opt"><div class="app" style="--shell:#0F3B45;--shell2:#155059;--canvas:#F5FAFB;--surf:#fff;--ink:#12292E;--mut:#5C7278;--brand:#0E9AAE;--pres:#1C8C5A;--late:#C4870C;--abs:#CE4257;--lv:#6C63C7;--line:#E1EDEF">
+    <div class="side" style="background:linear-gradient(180deg,var(--shell2),var(--shell))">
+      <div class="wm">Naveya</div>
+      <div class="nav on"><span class="dot"></span>Home</div>
+      <div class="nav"><span class="dot"></span>Attendance</div>
+      <div class="nav"><span class="dot"></span>Leave</div>
+      <div class="nav"><span class="dot"></span>Payslips</div>
+      <div class="spacer"></div>
+      <div class="me"><span class="av" style="background:var(--brand)">AR</span>Ananya Rao</div>
+    </div>
+    <div class="main" style="background:var(--canvas);color:var(--ink)">
+      <div><div class="hello">Good morning, Ananya</div><div class="meta" style="color:var(--mut)">PGT · Sunrise Public School</div></div>
+      <div class="card" style="background:var(--surf);border:1px solid var(--line)">
+        <div class="ringwrap"><svg width="64" height="64"><circle cx="32" cy="32" r="26" fill="none" stroke="#E8F2F4" stroke-width="8"/><circle cx="32" cy="32" r="26" fill="none" stroke="var(--pres)" stroke-width="8" stroke-linecap="round" stroke-dasharray="163 163" stroke-dashoffset="49" transform="rotate(-90 32 32)"/></svg><div class="ringtx" style="color:var(--ink)">7h</div></div>
+        <div class="tl"><div class="tlbar" style="background:#EAF3F5"><span class="seg" style="flex:34;background:var(--pres)"></span><span class="seg" style="flex:8;background:var(--late)"></span><span class="seg" style="flex:22;background:var(--pres)"></span><span class="seg" style="flex:36;background:transparent"></span></div><div class="tlx" style="color:var(--mut)"><span>9:00</span><span>13:00</span><span>17:00</span></div></div>
+      </div>
+      <div class="chips">
+        <span class="chip" style="background:#E1F3EA;color:#146045"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#1C8C5A"/><path d="M6 10.5l2.6 2.5L14 7.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>On time</span>
+        <span class="chip" style="background:#FAEFD8;color:#805806"><svg class="gl" viewBox="0 0 20 20"><ellipse cx="10" cy="12" rx="7" ry="4.6" fill="#C4870C"/><circle cx="15.5" cy="9" r="2.7" fill="#C4870C"/><circle cx="16.4" cy="8.5" r=".7" fill="#fff"/><path d="M3.4 13.6l-1.6 1M5 15.6l-.7 1.5M15 15.6l.7 1.5" stroke="#C4870C" stroke-width="1.4" stroke-linecap="round"/></svg>Late</span>
+        <span class="chip" style="background:#FAE5E9;color:#92283A"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#CE4257"/><path d="M7 7l6 6M13 7l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Absent</span>
+        <span class="chip" style="background:#E9E7F7;color:#443C94"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#6C63C7"/><circle cx="7.2" cy="8.6" r="1.2" fill="#fff"/><circle cx="12.8" cy="8.6" r="1.2" fill="#fff"/><path d="M6.6 12.4c1.9 2 4.9 2 6.8 0" stroke="#fff" stroke-width="1.7" fill="none" stroke-linecap="round"/></svg>On leave</span>
+      </div>
+      <div class="pay" style="background:var(--shell);color:#fff"><span class="paylab" style="opacity:.82">July net pay</span><span class="payamt">₹ 68,240.00</span></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- D · AUBERGINE LAC -->
+<div>
+  <div class="optbar"><span class="optname">D · Aubergine Lac</span><span class="optdesc">deep wine — ledger/bahi authority, warm gravitas</span></div>
+  <div class="opt"><div class="app" style="--shell:#5C1F35;--shell2:#722842;--canvas:#FCF7F8;--surf:#fff;--ink:#2E1720;--mut:#77606A;--brand:#A83250;--pres:#2E7D5B;--late:#C4870C;--abs:#C8384F;--lv:#7B4FA8;--line:#F0E2E6">
+    <div class="side" style="background:linear-gradient(180deg,var(--shell2),var(--shell))">
+      <div class="wm">Naveya</div>
+      <div class="nav on"><span class="dot"></span>Home</div>
+      <div class="nav"><span class="dot"></span>Attendance</div>
+      <div class="nav"><span class="dot"></span>Leave</div>
+      <div class="nav"><span class="dot"></span>Payslips</div>
+      <div class="spacer"></div>
+      <div class="me"><span class="av" style="background:var(--brand)">AR</span>Ananya Rao</div>
+    </div>
+    <div class="main" style="background:var(--canvas);color:var(--ink)">
+      <div><div class="hello">Good morning, Ananya</div><div class="meta" style="color:var(--mut)">PGT · Sunrise Public School</div></div>
+      <div class="card" style="background:var(--surf);border:1px solid var(--line)">
+        <div class="ringwrap"><svg width="64" height="64"><circle cx="32" cy="32" r="26" fill="none" stroke="#F4E7EB" stroke-width="8"/><circle cx="32" cy="32" r="26" fill="none" stroke="var(--pres)" stroke-width="8" stroke-linecap="round" stroke-dasharray="163 163" stroke-dashoffset="49" transform="rotate(-90 32 32)"/></svg><div class="ringtx" style="color:var(--ink)">7h</div></div>
+        <div class="tl"><div class="tlbar" style="background:#F6E9ED"><span class="seg" style="flex:34;background:var(--pres)"></span><span class="seg" style="flex:8;background:var(--late)"></span><span class="seg" style="flex:22;background:var(--pres)"></span><span class="seg" style="flex:36;background:transparent"></span></div><div class="tlx" style="color:var(--mut)"><span>9:00</span><span>13:00</span><span>17:00</span></div></div>
+      </div>
+      <div class="chips">
+        <span class="chip" style="background:#E3F2EA;color:#1C6045"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#2E7D5B"/><path d="M6 10.5l2.6 2.5L14 7.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>On time</span>
+        <span class="chip" style="background:#FAEFD8;color:#805806"><svg class="gl" viewBox="0 0 20 20"><ellipse cx="10" cy="12" rx="7" ry="4.6" fill="#C4870C"/><circle cx="15.5" cy="9" r="2.7" fill="#C4870C"/><circle cx="16.4" cy="8.5" r=".7" fill="#fff"/><path d="M3.4 13.6l-1.6 1M5 15.6l-.7 1.5M15 15.6l.7 1.5" stroke="#C4870C" stroke-width="1.4" stroke-linecap="round"/></svg>Late</span>
+        <span class="chip" style="background:#FAE4E8;color:#8E2338"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#C8384F"/><path d="M7 7l6 6M13 7l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Absent</span>
+        <span class="chip" style="background:#EEE6F6;color:#523174"><svg class="gl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#7B4FA8"/><circle cx="7.2" cy="8.6" r="1.2" fill="#fff"/><circle cx="12.8" cy="8.6" r="1.2" fill="#fff"/><path d="M6.6 12.4c1.9 2 4.9 2 6.8 0" stroke="#fff" stroke-width="1.7" fill="none" stroke-linecap="round"/></svg>On leave</span>
+      </div>
+      <div class="pay" style="background:var(--shell);color:#fff"><span class="paylab" style="opacity:.82">July net pay</span><span class="payamt">₹ 68,240.00</span></div>
+    </div>
+  </div></div>
+</div>
+
+</div>
+</body>
+</html>

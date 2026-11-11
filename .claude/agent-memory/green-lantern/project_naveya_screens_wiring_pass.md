@@ -1,0 +1,18 @@
+---
+name: naveya-screens-wiring-pass
+description: how the five design/screens/*.jsx employee-route content components got wired into index.html/prototype.html/design-canvas.jsx, and the gotchas hit doing it.
+metadata:
+  type: project
+---
+
+The five sharded screens (attendance, leave, payslips, documents, profile — see [naveya screens directory](project_naveya_screens_directory.md)) were wired into the actual navigable surfaces in one integration pass:
+
+- **Script load order (binding):** `tokens.jsx` → `kit.jsx` → `screens.jsx` → `screens/attendance.jsx` → `screens/leave.jsx` → `screens/payslips.jsx` → `screens/documents.jsx` → `screens/profile.jsx` → `design-canvas.jsx` (or `prototype.jsx`), in BOTH `index.html` and `prototype.html`. This order is load-bearing, not cosmetic: `design/screens.jsx` ends with an *unconditional* `window.Screens = { Login, Employee, AdminStub };` (no `window.Screens || {}` guard) — if a per-screen file loaded BEFORE `screens.jsx`, its contribution would be silently wiped. The per-screen files use the safe `window.Screens = window.Screens || {}; window.Screens.X = X;` guard specifically so they can load AFTER.
+- **Routing shape:** `screens.jsx`'s `Employee` component now delegates to a small `EmployeeRouteContent({ route, onNavigate })` switch that looks up `window.Screens.Attendance` / `.Leave` / `.Payslips` / `.Documents` / `.Profile` by route key and falls back to the old `Placeholder` if a screen isn't present (defensive — canvas/prototype still work even if one screen file fails to load). Cross-screen navigation (Attendance ↔ Payslips "View payslip"/"View attendance" links) is wired via `onNavigate("payslips")` / `onNavigate("attendance")` callbacks, not prop-drilled data.
+- **Canvas artboards:** added a new "Screens" page/tab in `design/design-canvas.jsx` that reuses `window.Screens.Employee route="attendance"` etc. (same technique as the existing Login/Home artboards) rather than duplicating shell chrome per screen — this gets the left-nav/top-bar/theme parity for free. Employee-shell artboards needed widening to `w={1400}` (was `1240` for Home, clipping the right column); rule of thumb: artboard width ≈ 224 (nav) + 48 (2× content padding) + the screen's own `maxWidth` (1040–1080 for these five), plus headroom.
+- **Consistency-pass finding:** `payslips.jsx`'s list view was missing the page-level bilingual `h1` + role/campus subtitle line that every sibling screen (attendance, leave, documents, and profile's identity block) has — added it, and renamed the list's own `SectionHeader` from "Payslips" (now redundant with the new h1) to "All periods" to avoid a duplicate label.
+- **Puppeteer route-click gotcha:** the left-nav rows in `EmployeeShell` are `<div onClick>` wrapping an `<Icon>` SVG + a `<span>` label — a `document.querySelectorAll('div')` + `.textContent.trim() === label` selector fails to find leaf rows (the SVG's presence trips naive `children.length === 0` filters). Select the label `<span>` by text, then `.closest('div')` and click that.
+
+**Why:** this was purely an integration/wiring dispatch (no new screen content) — the risk was entirely in the mechanics (load order, route dispatch, artboard sizing), not in component design.
+
+**How to apply:** any future new employee screen under `design/screens/<name>.jsx` should (1) get a script tag after `screens.jsx` in both HTML entry points, (2) get a branch in `EmployeeRouteContent`'s route switch, (3) get a `w={1400}`-class artboard on the canvas's "Screens" page, and (4) get a quick top-of-screen consistency check against a sibling (page h1 + role/campus subtitle line) before calling the dispatch done.

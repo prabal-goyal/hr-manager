@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Anek+Latin:wght@400;500;600&family=Anek+Devanagari:wght@400;500;600&family=Mukta:wght@400;500;600&display=swap" rel="stylesheet"></helmet>
+<div style="width:1240px;height:828px;display:flex;overflow:hidden;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:14px;background:{{ c.bg }};color:{{ c.ink }};box-sizing:border-box;position:relative">
+
+  <div style="width:214px;flex:none;display:flex;flex-direction:column;background:{{ c.railBg }};color:{{ c.railInk }};box-sizing:border-box">
+    <div style="padding:20px 18px 18px;border-bottom:1px solid rgba(255,255,255,.09)">
+      <div style="font-family:'Anek Latin',sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;line-height:1">Naveya</div>
+      <div style="font-family:'Anek Devanagari','Mukta',sans-serif;font-weight:400;font-size:15px;line-height:22px;opacity:.62;margin-top:1px">नवेया · एचआरएमएस</div>
+    </div>
+    <div style="padding:14px 10px 10px;display:flex;flex-direction:column;gap:1px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;opacity:.6;padding:4px 10px 8px">Session 2026–27 · Term 2</div>
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="9">
+        <div style="display:flex;align-items:center;gap:11px;padding:7px 10px;font-size:13.5px;background:{{ n.bg }};color:{{ n.fg }};font-weight:{{ n.fw }};box-shadow:{{ n.rule }}">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.66;width:12px;text-align:center">{{ n.mark }}</span><span style="flex:1">{{ n.label }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;opacity:.6">{{ n.badge }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="flex:1"></div>
+    <div style="margin:0 18px 18px;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.09);font-size:11px;line-height:1.55;opacity:.62">
+      Honorarium rate read from <span style="font-family:'JetBrains Mono',monospace;opacity:.85">SUB-HON</span> pay head · ₹450 per period, ₹600 for senior-school science
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column;box-sizing:border-box">
+    <div style="height:50px;flex:none;display:flex;align-items:center;gap:10px;padding:0 22px;border-bottom:1px solid color-mix(in srgb, currentColor 12%, transparent)">
+      <span style="font-size:12.5px;opacity:.62">Substitutions</span><span style="opacity:.45">›</span><span style="font-size:12.5px;font-weight:500">Today's arrangement</span>
+      <span style="margin-left:6px;padding:3px 7px;font-size:10px;font-weight:600;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;background:{{ c.brassSoft }};color:{{ c.brass }}">PHASE 2</span>
+      <div style="flex:1"></div>
+      <div style="display:flex;align-items:center;gap:7px;padding:5px 10px;border:1px solid color-mix(in srgb, currentColor 15%, transparent);font-size:12.5px"><span style="opacity:.62">Campus</span><span style="font-weight:500">Aravali</span><span style="opacity:.6;font-size:9px">▾</span></div>
+      <div style="display:flex;align-items:center;gap:7px;padding:6px 10px;font-size:12px;font-weight:500;background:{{ c.accentSoft }};color:{{ c.accent }}"><span style="width:5px;height:5px;background:currentColor"></span>4 periods open</div>
+      <button style="border:0;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;padding:8px 15px;background:{{ c.action }};color:{{ c.onAction }}">Publish arrangement</button>
+    </div>
+
+    <div style="flex:none;padding:20px 22px 16px;display:flex;align-items:flex-end;gap:26px;border-bottom:2px solid {{ c.accent }}">
+      <div style="flex:1;min-width:0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;opacity:.62">Arrangement sheet · drawn from the live timetable</div>
+        <div style="font-family:'Anek Latin',sans-serif;font-size:34px;font-weight:600;letter-spacing:-0.022em;line-height:40px;margin-top:4px">Tuesday, 11 August</div>
+        <div style="display:flex;align-items:baseline;gap:9px;margin-top:1px">
+          <span style="font-family:'Anek Devanagari','Mukta',sans-serif;font-size:15px;line-height:23px;opacity:.62">व्यवस्था पत्रक</span>
+          <span style="opacity:.45">।</span>
+          <span style="font-size:12.5px;opacity:.62">4 staff absent · 18 periods needing cover · published to staff app at 07:30</span>
+        </div>
+      </div>
+      <div style="text-align:right;flex:none">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.62">Honorarium to August payroll</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:36px;line-height:44px;letter-spacing:-0.025em;font-feature-settings:'tnum' 1"><span style="font-size:22px;opacity:.62">₹</span>6,300</div>
+        <div style="font-size:11.5px;opacity:.62;margin-top:1px">14 of 18 periods assigned · posts under <span style="font-family:'JetBrains Mono',monospace">SUB-HON</span></div>
+      </div>
+    </div>
+
+    <div style="flex:1;min-height:0;display:flex;background:{{ c.paper }};box-sizing:border-box">
+
+      <div style="width:236px;flex:none;border-right:1px solid color-mix(in srgb, currentColor 12%, transparent);box-sizing:border-box;display:flex;flex-direction:column">
+        <div style="padding:13px 14px 10px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 12%, transparent)">Absent today</div>
+        <sc-for list="{{ absent }}" as="a" hint-placeholder-count="4">
+          <div style="padding:12px 14px;border-bottom:1px solid color-mix(in srgb, currentColor 8%, transparent);background:{{ a.bg }};box-shadow:{{ a.rule }};box-sizing:border-box">
+            <div style="display:flex;align-items:baseline;gap:7px">
+              <span style="font-size:13.5px;font-weight:600">{{ a.name }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;opacity:.62">{{ a.id }}</span>
+            </div>
+            <div style="font-size:11.5px;opacity:.62;margin-top:1px">{{ a.role }}</div>
+            <div style="display:flex;align-items:center;gap:7px;margin-top:8px">
+              <span style="padding:3px 6px;font-size:10.5px;font-weight:600;background:{{ a.reasonBg }};color:{{ a.reasonFg }}">{{ a.reason }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.66">{{ a.periods }}</span>
+            </div>
+          </div>
+        </sc-for>
+        <div style="flex:1"></div>
+        <div style="padding:12px 14px;font-size:11px;line-height:1.5;opacity:.62;border-top:1px solid color-mix(in srgb, currentColor 12%, transparent)">Leave approvals sync from the leave ledger each morning at 06:00. Half-days release only the affected half of the timetable.</div>
+      </div>
+
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column;box-sizing:border-box">
+        <div style="display:grid;grid-template-columns:96px repeat(4, 1fr);height:44px;align-items:end;border-bottom:1px solid color-mix(in srgb, currentColor 26%, transparent);font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;box-sizing:border-box">
+          <div style="padding:0 10px 9px 14px;opacity:.62;font-weight:600">Period</div>
+          <sc-for list="{{ cols }}" as="h" hint-placeholder-count="4">
+            <div style="padding:0 10px 9px;opacity:.62;font-weight:600;border-left:1px solid color-mix(in srgb, currentColor 10%, transparent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-sizing:border-box">{{ h }}</div>
+          </sc-for>
+        </div>
+        <sc-for list="{{ periods }}" as="p" hint-placeholder-count="8">
+          <div style="display:grid;grid-template-columns:96px repeat(4, 1fr);height:66px;border-bottom:1px solid color-mix(in srgb, currentColor 8%, transparent);background:{{ p.rowBg }};box-sizing:border-box">
+            <div style="padding:11px 10px 0 14px;box-sizing:border-box">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:600">{{ p.n }}</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;opacity:.62;margin-top:1px">{{ p.time }}</div>
+            </div>
+            <sc-for list="{{ p.cells }}" as="x" hint-placeholder-count="4">
+              <div style="padding:8px 9px;border-left:1px solid color-mix(in srgb, currentColor 10%, transparent);box-sizing:border-box;min-width:0">
+                <div style="height:100%;box-sizing:border-box;padding:{{ x.pad }};background:{{ x.bg }};box-shadow:{{ x.ring }};display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0">
+                  <div style="font-size:11.5px;font-weight:600;color:{{ x.topFg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ x.top }}</div>
+                  <div style="display:flex;align-items:center;gap:6px;min-width:0">
+                    <span style="font-size:11px;color:{{ x.subFg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ x.sub }}</span>
+                    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:{{ x.feeFg }};flex:none">{{ x.fee }}</span>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="height:44px;flex:none;display:flex;align-items:center;gap:14px;padding:0 22px;font-size:11.5px;opacity:.66;border-top:1px solid color-mix(in srgb, currentColor 12%, transparent)">
+      <span>No teacher may take more than <span style="font-weight:600;opacity:1">2</span> substitutions a day or exceed 6 teaching periods</span>
+      <span style="opacity:.6">।</span>
+      <span>Every assignment writes an audited honorarium line into the open payroll run</span>
+      <div style="flex:1"></div>
+      <span style="font-family:'JetBrains Mono',monospace;letter-spacing:.05em">Δ 4 OPEN</span>
+    </div>
+  </div>
+
+  <div style="position:absolute;left:894px;top:552px;width:314px;background:{{ c.pop }};box-shadow:{{ c.popShadow }};box-sizing:border-box">
+    <div style="padding:10px 14px 9px;border-bottom:1px solid color-mix(in srgb, currentColor 12%, transparent)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;opacity:.62">Cover · Period 5 · IX-B Physics</div>
+      <div style="font-size:13.5px;font-weight:600;margin-top:3px">Free and eligible now</div>
+    </div>
+    <sc-for list="{{ candidates }}" as="k" hint-placeholder-count="4">
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid color-mix(in srgb, currentColor 8%, transparent);background:{{ k.bg }};box-sizing:border-box">
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ k.name }}</span>
+            <span style="padding:2px 5px;font-size:9.5px;font-weight:600;font-family:'JetBrains Mono',monospace;background:{{ k.tagBg }};color:{{ k.tagFg }};flex:none">{{ k.tag }}</span>
+          </div>
+          <div style="font-size:10.5px;opacity:.62;margin-top:2px;font-family:'JetBrains Mono',monospace">{{ k.meta }}</div>
+        </div>
+        <button style="flex:none;border:0;cursor:pointer;font-family:inherit;font-size:11.5px;font-weight:600;padding:6px 10px;background:{{ k.btnBg }};color:{{ k.btnFg }}">{{ k.btn }}</button>
+      </div>
+    </sc-for>
+      </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:828},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bahi-light&quot;,&quot;bahi-dark&quot;,&quot;peacock-light&quot;,&quot;peacock-dark&quot;],&quot;default&quot;:&quot;peacock-light&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const P = {
+  bahi: {
+    light: { bg:'#FCFBF8', paper:'#FFFEFC', railBg:'#231F1A', railInk:'#F2EFE9', pop:'#FFFFFF',
+      ink:'#27221D', accent:'#B63132', accentSoft:'#F3E2DE', action:'#27221D', onAction:'#FCFBF8',
+      brass:'#9C7429', brassSoft:'#F0E7D4', danger:'#C22B2A', alt:'rgba(39,34,29,.015)',
+      sel:'rgba(182,49,50,.06)', covered:'rgba(39,34,29,.04)',
+      popShadow:'0 24px 48px -12px rgba(22,28,45,.28), 0 8px 16px -8px rgba(22,28,45,.16)' },
+    dark: { bg:'#15120F', paper:'#1B1815', railBg:'#0E0C0A', railInk:'#EEEDEA', pop:'#262119',
+      ink:'#EEEDEA', accent:'#D86258', accentSoft:'#3A1D1A', action:'#EEEDEA', onAction:'#15120F',
+      brass:'#DEB464', brassSoft:'#2E2617', danger:'#EF675C', alt:'rgba(255,255,255,.015)',
+      sel:'rgba(216,98,88,.10)', covered:'rgba(255,255,255,.04)',
+      popShadow:'inset 0 1px 0 rgba(255,255,255,.07), 0 16px 40px rgba(0,0,0,.55)' }
+  },
+  peacock: {
+    light: { bg:'#F7FAFA', paper:'#FFFFFF', railBg:'#0F2229', railInk:'#E8F1F1', pop:'#FFFFFF',
+      ink:'#18242A', accent:'#00707C', accentSoft:'#D9EEEF', action:'#00636E', onAction:'#FFFFFF',
+      brass:'#8A6A2F', brassSoft:'#F0E8D8', danger:'#C22B2A', alt:'rgba(24,36,42,.015)',
+      sel:'rgba(0,112,124,.06)', covered:'rgba(24,36,42,.04)',
+      popShadow:'0 24px 48px -12px rgba(22,28,45,.28), 0 8px 16px -8px rgba(22,28,45,.16)' },
+    dark: { bg:'#0D1417', paper:'#131B1F', railBg:'#08100F', railInk:'#E7EDEE', pop:'#1D272B',
+      ink:'#E7EDEE', accent:'#28BAC1', accentSoft:'#0E2E30', action:'#28BAC1', onAction:'#08181A',
+      brass:'#DEB464', brassSoft:'#26200F', danger:'#EF675C', alt:'rgba(255,255,255,.015)',
+      sel:'rgba(40,186,193,.10)', covered:'rgba(255,255,255,.04)',
+      popShadow:'inset 0 1px 0 rgba(255,255,255,.07), 0 16px 40px rgba(0,0,0,.55)' }
+  }
+};
+
+const ABSENT = [
+  ['Fatima Qureshi','NAV-0311','Teacher — Hindi','Sick leave','6 periods', 'danger'],
+  ['Harpreet Kaur','NAV-0367','Teacher — English','Casual leave','5 periods', 'brass'],
+  ['Nikhil Bharadwaj','NAV-0288','Teacher — Chemistry','On duty · Inter-school','4 periods', 'accent'],
+  ['Sunita Bhalla','NAV-0620','Transport Coordinator','Half day · post-lunch','3 periods', 'brass']
+];
+
+// per period: [class+subject, substitute | null, fee] per absent teacher column; '' = no class
+const GRID = [
+  ['1','07:50', [['VII-A Hindi','K. Iyer',450], ['X-C English','L. Nair',450], ['', null, 0], ['', null, 0]]],
+  ['2','08:40', [['IX-B Hindi','A. Deshpande',450], ['', null, 0], ['XI-A Chemistry','J. Mathew',600], ['', null, 0]]],
+  ['3','09:30', [['', null, 0], ['VIII-B English','M. Raghunathan',450], ['IX-A Chemistry','J. Mathew',600], ['', null, 0]]],
+  ['4','10:40', [['VI-C Hindi','L. Nair',450], ['XII-A English', null, 450], ['', null, 0], ['', null, 0]]],
+  ['5','11:30', [['XI-B Hindi','D. Singh',450], ['', null, 0], ['IX-B Physics', null, 600], ['', null, 0]]],
+  ['6','12:20', [['', null, 0], ['VII-B English','A. Bose',450], ['X-A Chemistry','M. Raghunathan',600], ['Transport desk','R. Menon',300]]],
+  ['7','13:40', [['X-B Hindi','K. Iyer',450], ['IX-C English', null, 450], ['', null, 0], ['Dispersal duty','R. Menon',300]]],
+  ['8','14:30', [['VIII-A Hindi','A. Deshpande',450], ['', null, 0], ['', null, 0], ['Bus bay check', null, 300]]]
+];
+
+const CANDIDATES = [
+  ['Meera Raghunathan','Physics','Free P5 · 1 sub this month','best match', true],
+  ['Joseph Mathew','Lab','Free P5 · 2 subs this month','same dept', false],
+  ['Kavya Iyer','Maths','Free P5 · 0 subs this month','cross-subject', false],
+  ['Devraj Singh','Robotics','Guest faculty · paid per period','guest', false]
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    const variant = this.props.variant || 'peacock-light';
+    const [fam, mode] = variant.split('-');
+    const c = P[fam][mode];
+    const dim = mode === 'dark';
+    const faint = dim ? 'rgba(255,255,255,.32)' : 'rgba(0,0,0,.3)';
+    const hair = dim ? 'rgba(255,255,255,.14)' : 'rgba(0,0,0,.12)';
+
+    const reasonMap = { danger:[c.accentSoft, c.accent], brass:[c.brassSoft, c.brass], accent:[c.accentSoft, c.accent] };
+    const absent = ABSENT.map(([name, id, role, reason, periods, kind], i) => ({
+      name, id, role, reason, periods,
+      reasonBg: reasonMap[kind][0], reasonFg: reasonMap[kind][1],
+      bg: i === 2 ? c.sel : 'transparent',
+      rule: i === 2 ? ('inset 2px 0 0 ' + c.accent) : 'none'
+    }));
+
+    const cols = ['F. Qureshi · Hindi','H. Kaur · English','N. Bharadwaj · Chem','S. Bhalla · Transport'];
+
+    const periods = GRID.map(([n, time, cells], i) => ({
+      n: 'P' + n, time,
+      rowBg: i % 2 ? c.alt : 'transparent',
+      cells: cells.map(([label, sub, fee]) => {
+        if (!label) return { top:'', sub:'', fee:'', pad:'0', bg:'transparent', ring:'none', topFg:faint, subFg:faint, feeFg:faint };
+        if (sub) return { top: label, sub: '→ ' + sub, fee: '₹' + fee, pad:'7px 9px',
+          bg: c.covered, ring:'none', topFg:'inherit', subFg: dim ? 'rgba(255,255,255,.75)' : 'rgba(0,0,0,.68)', feeFg: c.brass };
+        return { top: label, sub: 'Unassigned', fee: '₹' + fee, pad:'7px 9px',
+          bg:'transparent', ring:'inset 0 0 0 1.5px ' + c.accent, topFg:'inherit', subFg: c.accent, feeFg: faint };
+      })
+    }));
+
+    const candidates = CANDIDATES.map(([name, tag, meta, why, best]) => ({
+      name, tag, meta,
+      tagBg: best ? c.accentSoft : (dim ? 'rgba(255,255,255,.07)' : 'rgba(0,0,0,.05)'),
+      tagFg: best ? c.accent : (dim ? 'rgba(255,255,255,.75)' : 'rgba(0,0,0,.68)'),
+      bg: best ? c.sel : 'transparent',
+      btn: best ? 'Assign' : 'Assign',
+      btnBg: best ? c.action : 'transparent',
+      btnFg: best ? c.onAction : 'inherit'
+    }));
+    candidates.forEach((k, i) => { if (i) { k.btnBg = 'transparent'; k.btnFg = 'inherit'; } });
+
+    const navItems = [
+      ['◫','Overview',''],['▦','Attendance',''],['◷','Leave ledger',''],['₹','Payroll','1'],
+      ['◈','Statutory',''],['⇄','Substitutions','4'],['◎','Appraisal',''],['✉','Helpdesk','7'],['⌸','Recruitment','']
+    ];
+    const nav = navItems.map(([mark, label, badge]) => {
+      const active = label === 'Substitutions';
+      return { mark, label, badge,
+        bg: active ? 'rgba(255,255,255,.07)' : 'transparent',
+        fg: active ? c.accent : 'inherit',
+        fw: active ? 600 : 400,
+        rule: active ? ('inset 2px 0 0 ' + c.accent) : 'none' };
+    });
+
+    return { c, absent, cols, periods, candidates, nav, hair };
+  }
+}
+
+</script>
+</body>
+</html>

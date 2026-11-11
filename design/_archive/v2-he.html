@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Naveya — Explore E · Editorial Premium ("The Staff Daily")</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Schibsted+Grotesk:wght@400;500;600;700&family=Mukta:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; height: 100%; background: #F5F5F0; }
+    #root { min-height: 100vh; }
+    * { box-sizing: border-box; }
+  </style>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    /* Force the CLASSIC JSX runtime so JSX compiles to React.createElement
+       (uses the global React UMD) — no ESM import injection, no build step. */
+    Babel.registerPreset("tenure", { presets: [[Babel.availablePresets["react"], { runtime: "classic" }]] });
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- exploration E only: theme + language toggles live inside the screen -->
+  <script type="text/babel" data-presets="tenure" src="v2/explore/home-e.jsx"></script>
+  <script type="text/babel" data-presets="tenure">
+    /* @jsxRuntime classic */
+    ReactDOM.createRoot(document.getElementById("root")).render(
+      React.createElement(window.HomeExplore.E)
+    );
+  </script>
+</body>
+</html>

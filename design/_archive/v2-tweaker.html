@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Naveya — STAFFROOM Design-System Tweaker (v2)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Mukta:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; height: 100%; background: #1A1210; }
+    #root { height: 100vh; }
+    * { box-sizing: border-box; }
+  </style>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    /* Force the CLASSIC JSX runtime so JSX compiles to React.createElement
+       (uses the global React UMD) — no ESM import injection, no build step. */
+    Babel.registerPreset("tenure", { presets: [[Babel.availablePresets["react"], { runtime: "classic" }]] });
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- code-as-design: tokens → kit → screens → tweaker, transpiled in-browser.
+       The tweaker drives the SAME window.G2/UI2/Screens2 the shipped v2
+       canvas uses (via ThemeProvider's `overrides` prop) — no forked copy. -->
+  <script type="text/babel" data-presets="tenure" src="v2/tokens.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="v2/kit.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="v2/screens.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="v2/tweaker.jsx"></script>
+  <script type="text/babel" data-presets="tenure">
+    /* @jsxRuntime classic */
+    ReactDOM.createRoot(document.getElementById("root")).render(<window.Tweaker2 />);
+  </script>
+</body>
+</html>

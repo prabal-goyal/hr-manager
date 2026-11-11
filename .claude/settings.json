@@ -1,0 +1,140 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "bash .claude/scripts/statusline.sh",
+    "padding": 0
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/check-contract-sync.sh",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/remind-knowledge-capture.sh",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-rls-policy.sh",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-pii-logging.sh",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-vendor-isolation.sh",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-hand-rolled-auth.sh",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-money-float.sh",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-statutory-hardcode.sh",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-migration-conflicts.sh",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-workdir-boundary.sh",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-missing-dataloader.sh",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-hardcoded-values.sh",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-no-any.sh",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-i18n-strings.sh",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "command -v jq >/dev/null 2>&1 || exit 0; f=$(jq -r '.tool_input.file_path // empty'); [ -n \"$f\" ] || exit 0; case \"$f\" in frontend/*.ts|frontend/*.tsx) NVM_DIR=\"${NVM_DIR:-$HOME/.nvm}\"; [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" >/dev/null 2>&1; command -v npx >/dev/null || exit 0; cd frontend || exit 0; out=$(npx eslint --fix \"${f#frontend/}\" 2>&1); status=$?; if [ \"$status\" -gt 1 ]; then echo \"WARN (eslint-autofix): eslint failed to run (exit=$status) on $f -- file NOT auto-fixed, lint manually:\" >&2; echo \"$out\" | tail -20 >&2; fi ;; esac",
+            "timeout": 10000
+          },
+          {
+            "type": "command",
+            "command": "command -v jq >/dev/null 2>&1 || exit 0; f=$(jq -r '.tool_input.file_path // empty'); [ -n \"$f\" ] || exit 0; case \"$f\" in backend/*.py) command -v uv >/dev/null && cd backend && uv run ruff check --fix \"${f#backend/}\" 2>/dev/null && uv run ruff format \"${f#backend/}\" 2>/dev/null || true ;; esac",
+            "timeout": 10000
+          },
+          {
+            "type": "command",
+            "command": "command -v jq >/dev/null 2>&1 || exit 0; f=$(jq -r '.tool_input.file_path // empty'); [ -n \"$f\" ] || exit 0; case \"$f\" in app/*.dart) cd app && FL=\"flutter\" DA=\"dart\"; command -v fvm >/dev/null && FL=\"fvm flutter\" DA=\"fvm dart\"; { $DA format \"${f#app/}\" 2>/dev/null || true; } && { $FL analyze 2>/dev/null || true; } ;; esac",
+            "timeout": 30000
+          },
+          {
+            "type": "command",
+            "command": "command -v jq >/dev/null 2>&1 || exit 0; f=$(jq -r '.tool_input.file_path // empty'); [ -n \"$f\" ] || exit 0; case \"$f\" in *.py|*.ts|*.tsx|*.js|*.jsx|*.dart) grep -nEi '(AKIA[0-9A-Z]{16}|sk-[a-zA-Z0-9]{20,}|ghp_[a-zA-Z0-9]{36}|tf_[a-zA-Z0-9_]{20,}|BEGIN RSA PRIVATE|BEGIN OPENSSH PRIVATE)' \"$f\" && echo 'WARNING: possible secret in file — remove before committing.' || true ;; esac",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/skills/impeccable/scripts/hook.mjs\"",
+            "timeout": 5,
+            "statusMessage": "Checking UI changes"
+          }
+        ]
+      }
+    ]
+  }
+}

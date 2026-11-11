@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+# Node / build
+node_modules/
+dist/
+build/
+.next/
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+# Env / secrets
+.env
+.env.*
+*.local
+# Editor
+.vscode/
+.idea/
+
+# redundant: unpacked into design/mockups/
+Naveya UI mockups.zip
+
+# local Claude settings — machine-specific. Never committed; the shared settings.json is.
+.claude/settings.local.json
+
+# local MCP config — may hold credentials
+.mcp.json
+
+# per-agent git worktrees created by dispatched agents — transient, never committed
+.claude/worktrees/
+
+# editor/script backups
+*.bak

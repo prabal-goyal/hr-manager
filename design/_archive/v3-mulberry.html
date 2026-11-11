@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Naveya · Design System v3 (Slate &amp; Mulberry)</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%23C14D29' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 25.5h28'/%3E%3Cpath d='M8.5 25.5c3.2 5.6 7.3 8.4 11.5 8.4s8.3-2.8 11.5-8.4'/%3E%3Cpath d='M20 25.5V7.5'/%3E%3Cpath d='M20 7.5c5.6 2.7 8.6 7.5 9.6 14'/%3E%3C/g%3E%3Ccircle cx='11.5' cy='9.5' r='1.9' fill='%23C14D29'/%3E%3C/svg%3E" />
+  <script>
+    /* Deep-link contract: ?screen=login|home|attendance|leave|payslips|documents|profile · ?theme=light|dark · ?lang=en|hi
+       URL params win over localStorage and are NOT persisted, so variant
+       screenshots are deterministic. */
+    (function () {
+      var theme = null, lang = null;
+      try {
+        theme = localStorage.getItem("naveya-theme");
+        lang = localStorage.getItem("naveya-lang");
+      } catch (e) { /* storage unavailable */ }
+      var p = new URLSearchParams(location.search);
+      if (p.get("theme")) theme = p.get("theme");
+      if (p.get("lang")) lang = p.get("lang");
+      /* LIGHT IS THE DEFAULT. Staffroom Terracotta is a light-first palette
+         (warm-neutral page #F9F7F8, white cards) and a teacher opens this on a school
+         desktop in daylight — so we do NOT follow prefers-color-scheme. Dark
+         (warm espresso) stays available via the toggle, ?theme=dark, or a
+         stored preference. */
+      if (theme !== "dark" && theme !== "light") theme = "light";
+      if (lang !== "hi" && lang !== "en") lang = "en";
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.lang = lang;
+      window.NAVEYA_BOOT = {
+        theme: theme,
+        lang: lang,
+        role: p.get("role") || "employee",
+        /* the screen key is validated against the role's own rail at mount,
+           so a stale ?screen= from another role falls back to that role's home */
+        screen: p.get("screen") || null
+      };
+      document.documentElement.style.background = theme === "dark" ? "#151214" : "#F9F7F8";
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&family=Roboto:wght@400..700&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    #root { min-height: 100vh; }
+    @keyframes nv3pulse { 0%,100% { opacity: 1 } 50% { opacity: .55 } }
+    /* the rail scrolls when a role carries more items than fit;
+       the bar itself stays out of the way */
+    .nv3-rail-scroll::-webkit-scrollbar { width: 0; height: 0; }
+    /* The theme-accurate :focus-visible ring, page background and
+       selection colour are injected by kit.jsx's ThemeProvider
+       (reads window.G3 live, light + dark parity) — not hardcoded. */
+  </style>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    /* Force the CLASSIC JSX runtime so JSX compiles to React.createElement
+       (uses the global React UMD) — no ESM import injection, no build step.
+       Copied verbatim from v2.html; without it the page renders blank. */
+    Babel.registerPreset("tenure", { presets: [[Babel.availablePresets["react"], { runtime: "classic" }]] });
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- code-as-design: tokens -> kit -> screens -> harness, transpiled in-browser -->
+  <script type="text/babel" data-presets="tenure" src="../v3/tokens.jsx"></script>
+  <!-- the ONLY difference from v3.html: this one line swaps the
+       palette. Every screen, the rail, the layouts and the type are
+       the same files. -->
+  <script type="text/babel" data-presets="tenure" src="tokens-mulberry.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/kit.jsx"></script>
+  <!-- the leave approval chain: one store five dashboards read -->
+  <script type="text/babel" data-presets="tenure" src="../v3/leaveflow.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/campus.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/person.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/holidays.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/screens.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/attendance.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/leave.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/payslips.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/documents.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/profile.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/depthead.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/principal.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/director.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/payroll.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/groupadmin.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/accountant.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr-compliance.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr-add.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr-logins.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr-attendance.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr-record.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr-leaveatt.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr-hiring.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr-lifecycle.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr-offers.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr-helpdesk.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/hr-reports.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/emp-tasks.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/py-salary.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/py-ops.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/ga-systems.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/public.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="../v3/pages/login.jsx"></script>
+  <script type="text/babel" data-presets="tenure">
+    /* @jsxRuntime classic */
+    function NaveyaV3() {
+      const boot = window.NAVEYA_BOOT;
+      const { ThemeProvider, LangProvider, Rail, EmptyState, navItemsFor, ROLES } = window.UI3;
+      const { Login, Home } = window.Screens3;
+      const P = window.Pages3 || {};
+
+      /* Flat table: screen keys are globally unique across roles. A key with
+         no component yet renders NotBuilt, so every rail item is reachable
+         and the gaps are visible rather than silently dead. */
+      const ROUTES = {
+        home: Home,
+        attendance: P.Attendance, leave: P.Leave, payslips: P.Payslips,
+        documents: P.Documents, profile: P.Profile,
+        dhHome: P.DHHome, dhLeave: P.DHLeave, dhAttendance: P.DHAttendance,
+        prHome: P.PRHome, prAttendance: P.PRAttendance, prLeave: P.PRLeave,
+        drHome: P.DRHome, drCampus: P.DRCampus, drLeave: P.DRLeave,
+        hrHome: P.HRHome, hrStaff: P.HRStaff, hrDocs: P.HRDocs,
+        hrCompliance: P.HRCompliance, hrLogins: P.HRLogins, hrHiring: P.HRHiring, hrOffers: P.HROffers,
+        hrLifecycle: P.HRLifecycle, hrLeaveAtt: P.HRLeaveAtt, hrAttendance: P.HRAttendance, hrHelp: P.HRHelp,
+        hrReports: P.HRReports,
+        /* detail routes — reachable from a screen, deliberately NOT rail items
+           (alfred's rule: ~40% of screens are tasks/details and must never
+           become nav) */
+        hrRecord: P.HRRecord, hrAdd: P.HRAdd,
+        empTasks: P.EmpTasks, empMore: P.EmpMore,
+        pySalary: P.PYSalary, pyOps: P.PYOps, gaSystems: P.GASystems,
+        /* PUB — the only screens with no authenticated user and no rail;
+           reachable by URL only (?screen=public), never a nav item */
+        public: P.Public,
+        pyHome: P.PYHome, pyRun: P.PYRun, pyPaidDays: P.PYPaidDays,
+        acHome: P.ACHome, acGate: P.ACGate, acLiability: P.ACLiability,
+        gaHome: P.GAHome, gaUsers: P.GAUsers, gaAudit: P.GAAudit,
+      };
+      /* screen key -> the inventory code it implements, so an unbuilt screen
+         can name itself honestly instead of saying "coming soon" */
+      const CODES = {
+        dhHome: "DH-01", dhLeave: "DH-02", dhAttendance: "DH-03",
+        prHome: "PR-01", prAttendance: "PR-02", prLeave: "PR-03",
+        drHome: "DR-01", drCampus: "DR-03", drLeave: "DR-02",
+        hrHome: "HR-01", hrStaff: "HR-02", hrDocs: "HR-09/10/11/12",
+        hrRecord: "HR-03", hrAdd: "HR-02a", hrLogins: "HR-38", hrAttendance: "HR-39", hrCompliance: "HR-09/10/11/12", hrHiring: "HR-13/14/16/17",
+        empTasks: "EMP-03/04/06/11/12/13", empMore: "EMP-08/09/14/15/16/17/19",
+        pySalary: "PY-02/03/04/05/06", pyOps: "PY-09..PY-18", gaSystems: "GA-02/03/05/06/07/09/10/11/12",
+        hrOffers: "HR-15/18/19/20/21", hrLifecycle: "HR-22/23/24/25",
+        hrLeaveAtt: "HR-26/27/28/29/30", hrHelp: "HR-31/32/33",
+        hrReports: "HR-08/34/35/36/37",
+        pyHome: "PY-01", pyRun: "PY-07", pyPaidDays: "PY-08",
+        acHome: "AC-01", acGate: "AC-02", acLiability: "AC-03",
+        gaHome: "GA-01", gaUsers: "GA-04", gaAudit: "GA-08",
+        public: "PUB-01/03/04",
+      };
+
+      function NotBuilt({ role, active, onNavigate, label }) {
+        /* G3 has no `.color` level — the palettes are G3.light / G3.dark.
+           Reading the theme is right anyway: a placeholder that ignored
+           dark mode would be the one screen that flashes white. */
+        const { c } = window.UI3.useTheme();
+        return (
+          <div style={{ display: "flex", minHeight: "100vh", background: c.page }}>
+            <Rail role={role} active={active} onNavigate={onNavigate} initials="AR" />
+            <main style={{ flex: 1, display: "grid", placeItems: "center", padding: 40 }}>
+              <EmptyState
+                icon="document"
+                title={label + " — not built yet"}
+                body={"This screen is " + (CODES[active] || active) + " in docs/screen-inventory.md. Its rail slot and route are wired, so it is reachable the moment it is built."}
+              />
+            </main>
+          </div>
+        );
+      }
+
+      function RoleSwitch({ role, onRole }) {
+        return (
+          /* z-index 1800, BELOW drawers and dialogs (2000) and toasts
+             (3000). At 9000 it sat on top of the primary button of every
+             side drawer, so a click meant for "Continue" switched role. */
+          <div style={{ position: "fixed", right: 14, bottom: 14, zIndex: 1800, display: "flex", gap: 4,
+                        background: "rgba(255,255,255,.94)", border: "1px solid rgba(0,0,0,.12)",
+                        borderRadius: 999, padding: 4, boxShadow: "0 6px 20px -6px rgba(0,0,0,.28)",
+                        fontFamily: "system-ui, sans-serif", fontSize: 11 }}>
+            {ROLES.map((r) => (
+              <button key={r} type="button" onClick={() => onRole(r)}
+                style={{ border: 0, cursor: "pointer", borderRadius: 999, padding: "5px 9px",
+                         background: r === role ? "#231C22" : "transparent",
+                         color: r === role ? "#F6E9DC" : "#3E2A1F", fontWeight: r === role ? 700 : 500 }}>
+                {r}
+              </button>
+            ))}
+          </div>
+        );
+      }
+
+      function Shell() {
+        const boot = window.NAVEYA_BOOT;
+        const [role, setRole] = React.useState(boot.role);
+        const nav = navItemsFor(role);
+        const firstKey = nav.length ? nav[0].key : "home";
+        /* a key is valid if the role's rail has it OR it is a routable
+           detail reached from one of that role's screens */
+        const valid = (r, k) => navItemsFor(r).some((it) => it.key === k) || !!ROUTES[k];
+        const [screen, setScreen] = React.useState(
+          boot.screen === "login" || (boot.screen && valid(boot.role, boot.screen)) ? boot.screen : firstKey
+        );
+        function pickRole(r) {
+          setRole(r);
+          const n = navItemsFor(r);
+          setScreen(n.length ? n[0].key : "home");
+        }
+        const Screen = ROUTES[screen];
+        const label = (nav.find((it) => it.key === screen) || {}).label;
+        return (
+          <React.Fragment>
+            {screen === "login"
+              ? <Login onSignIn={() => setScreen(firstKey)} />
+              : Screen
+                ? <Screen role={role} onNavigate={(k) => setScreen(k)} />
+                : <NotBuilt role={role} active={screen} onNavigate={(k) => setScreen(k)}
+                            label={label ? window.UI3.t(label) : screen} />}
+            <RoleSwitch role={role} onRole={pickRole} />
+          </React.Fragment>
+        );
+      }
+
+      return (
+        <ThemeProvider initialMode={boot.theme}>
+          <LangProvider initialLang={boot.lang}>
+            <Shell />
+          </LangProvider>
+        </ThemeProvider>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<NaveyaV3 />);
+  </script>
+</body>
+</html>

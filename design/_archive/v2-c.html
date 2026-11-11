@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Naveya — Employee Home, Variant C (compact rail, data as hero)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Mukta:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; height: 100%; background: #1A1210; }
+    #root { height: 100vh; }
+    * { box-sizing: border-box; }
+    /* The theme-accurate :focus-visible ring is injected by kit.jsx's
+       ThemeProvider (reads window.G2 live, light+dark parity) — not
+       hardcoded here. */
+  </style>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    /* Force the CLASSIC JSX runtime so JSX compiles to React.createElement
+       (uses the global React UMD) — no ESM import injection, no build step. */
+    Babel.registerPreset("tenure", { presets: [[Babel.availablePresets["react"], { runtime: "classic" }]] });
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- code-as-design: tokens → kit → variant, transpiled in-browser.
+       Variant C composes ONLY from window.G2/UI2 — it does not touch
+       tokens.jsx, kit.jsx, or screens.jsx. -->
+  <script type="text/babel" data-presets="tenure" src="v2/tokens.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="v2/kit.jsx"></script>
+  <script type="text/babel" data-presets="tenure" src="v2/variants/home-c.jsx"></script>
+  <script type="text/babel" data-presets="tenure">
+    /* @jsxRuntime classic */
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const initialMode = params.get("mode") === "dark" ? "dark" : "light";
+      const initialLang = params.get("lang") === "hi" ? "hi" : "en";
+      const { ThemeProvider, LangProvider } = window.UI2;
+      const HomeC = window.HomeVariants.C;
+      function Root() {
+        return (
+          <ThemeProvider initialMode={initialMode}>
+            <LangProvider initialLang={initialLang}>
+              <HomeC />
+            </LangProvider>
+          </ThemeProvider>
+        );
+      }
+      ReactDOM.createRoot(document.getElementById("root")).render(<Root />);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Anek+Latin:wght@400;500;600&family=Anek+Devanagari:wght@400;500;600&family=Mukta:wght@400;500;600&display=swap" rel="stylesheet"></helmet>
+<div style="width:1240px;height:828px;display:flex;overflow:hidden;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:14px;background:{{ c.bg }};color:{{ c.ink }};position:relative">
+
+  <div style="width:214px;flex:none;display:flex;flex-direction:column;background:{{ c.railBg }};color:{{ c.railInk }}">
+    <div style="padding:20px 18px 18px;border-bottom:1px solid rgba(255,255,255,.09)">
+      <div style="font-family:'Anek Latin',sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;line-height:1">Naveya</div>
+      <div style="font-family:'Anek Devanagari','Mukta',sans-serif;font-weight:400;font-size:15px;line-height:22px;opacity:.62;margin-top:1px">नवेया · एचआरएमएस</div>
+    </div>
+    <div style="padding:14px 10px 10px;display:flex;flex-direction:column;gap:1px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;opacity:.6;padding:4px 10px 8px">Session 2026–27 · Term 2</div>
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="9">
+        <div style="display:flex;align-items:center;gap:11px;padding:7px 10px;font-size:13.5px;background:{{ n.bg }};color:{{ n.fg }};font-weight:{{ n.fw }};box-shadow:{{ n.rule }}">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.66;width:12px;text-align:center">{{ n.mark }}</span><span style="flex:1">{{ n.label }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;opacity:.6">{{ n.badge }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="flex:1"></div>
+    <div style="margin:0 18px 14px;padding:12px 0 0;border-top:1px solid rgba(255,255,255,.09);font-size:11px;line-height:1.5;opacity:.62">
+      Statutory config <span style="font-family:'JetBrains Mono',monospace">v2026.2</span><br>PF 12% · PT Haryana · TDS FY26–27
+    </div>
+    <div style="padding:0 18px 18px;display:flex;align-items:center;gap:10px">
+      <div style="width:28px;height:28px;background:{{ c.brass }};color:{{ c.railBg }};font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace">RS</div>
+      <div style="line-height:1.3"><div style="font-size:12.5px;font-weight:500">R. Subramanian</div><div style="font-size:10.5px;opacity:.62">Payroll maker · Aravali</div></div>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column;position:relative">
+
+    <div style="height:50px;flex:none;display:flex;align-items:center;gap:10px;padding:0 22px;border-bottom:1px solid color-mix(in srgb, currentColor 12%, transparent)">
+      <span style="font-size:12.5px;opacity:.62">Payroll</span><span style="opacity:.45">›</span><span style="font-size:12.5px;opacity:.62">August 2026</span><span style="opacity:.45">›</span><span style="font-size:12.5px;font-weight:500">Register</span>
+      <div style="flex:1"></div>
+      <div style="display:flex;align-items:center;gap:7px;padding:5px 10px;border:1px solid color-mix(in srgb, currentColor 15%, transparent);font-size:12.5px"><span style="opacity:.62">Branch</span><span style="font-weight:500">Aravali</span><span style="opacity:.6;font-size:9px">▾</span></div>
+      <div style="display:flex;align-items:center;gap:7px;padding:6px 10px;font-size:12px;font-weight:500;background:{{ c.accentSoft }};color:{{ c.accent }}"><span style="width:5px;height:5px;background:currentColor"></span>Maker · in review</div>
+      <button style="border:0;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;padding:8px 15px;background:{{ c.action }};color:{{ c.onAction }}">Send for approval</button>
+    </div>
+
+    <div style="flex:none;padding:22px 22px 18px;display:flex;align-items:flex-end;gap:30px;border-bottom:2px solid {{ c.accent }}">
+      <div style="flex:1;min-width:0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;opacity:.62">Salary register · 01–31 August 2026</div>
+        <div style="font-family:'Anek Latin',sans-serif;font-size:38px;font-weight:600;letter-spacing:-0.022em;line-height:44px;margin-top:5px">The Shri Ram School</div>
+        <div style="display:flex;align-items:baseline;gap:9px;margin-top:2px">
+          <span style="font-family:'Anek Devanagari','Mukta',sans-serif;font-size:16px;line-height:24px;opacity:.62">वेतन रजिस्टर</span>
+          <span style="opacity:.45">।</span>
+          <span style="font-size:12.5px;opacity:.62">214 staff · 3 pay scales · locked 28 Aug 18:00 IST</span>
+        </div>
+      </div>
+      <div style="text-align:right;flex:none">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;opacity:.62">Net payable</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:42px;line-height:50px;letter-spacing:-0.03em;font-feature-settings:'tnum' 1,'lnum' 1"><span style="font-size:26px;opacity:.62">₹</span>1,26,44,180<span style="font-size:22px;opacity:.6">.00</span></div>
+        <div style="display:flex;gap:16px;justify-content:flex-end;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-feature-settings:'tnum' 1;margin-top:2px">
+          <span style="opacity:.66">gross 1,42,86,540</span><span style="color:{{ c.danger }}">− 16,42,360 deductions</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1;min-height:0;display:flex;background:{{ c.paper }}">
+      <div style="width:26px;flex:none;border-right:2px solid {{ c.accent }};background:{{ c.gutter }};padding-top:38px;display:flex;flex-direction:column;align-items:center;gap:0">
+        <sc-for list="{{ rows }}" as="r" hint-placeholder-count="10">
+          <div style="height:40px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9.5px;opacity:.5">{{ r.n }}</div>
+        </sc-for>
+      </div>
+
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+        <table style="width:968px;border-collapse:collapse;tableLayout:fixed">
+          
+          <thead><tr style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;height:38px">
+            <th style="box-sizing:border-box;width:88px;white-space:nowrap;text-align:left;padding:0 8px 0 10px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent)">Emp</th>
+            <th style="box-sizing:border-box;width:178px;white-space:nowrap;text-align:left;padding:0 8px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent)">Staff member</th>
+            <th style="box-sizing:border-box;width:38px;white-space:nowrap;text-align:left;padding:0 4px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent)">Cl</th>
+            <th style="box-sizing:border-box;width:170px;white-space:nowrap;text-align:left;padding:0 8px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent);border-right:1px solid color-mix(in srgb, currentColor 14%, transparent)">Muster · 26 days</th>
+            <th style="box-sizing:border-box;width:64px;white-space:nowrap;text-align:right;padding:0 8px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent)">Basic</th>
+            <th style="box-sizing:border-box;width:56px;white-space:nowrap;text-align:right;padding:0 8px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent)">HRA</th>
+            <th style="box-sizing:border-box;width:56px;white-space:nowrap;text-align:right;padding:0 8px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent)">Allow</th>
+            <th style="box-sizing:border-box;width:76px;white-space:nowrap;text-align:right;padding:0 8px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent)">Gross ₹</th>
+            <th style="box-sizing:border-box;width:52px;white-space:nowrap;text-align:right;padding:0 8px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent)">PF</th>
+            <th style="box-sizing:border-box;width:58px;white-space:nowrap;text-align:right;padding:0 8px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent)">TDS</th>
+            <th style="box-sizing:border-box;width:96px;white-space:nowrap;text-align:right;padding:0 8px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent);border-left:1px solid color-mix(in srgb, currentColor 14%, transparent)">Net ₹</th>
+            <th style="box-sizing:border-box;width:64px;white-space:nowrap;text-align:left;padding:0 8px;font-weight:600;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 30%, transparent)">Record</th>
+          </tr></thead>
+          <tbody>
+            <sc-for list="{{ rows }}" as="r" hint-placeholder-count="10">
+              <tr style="height:40px;background:{{ r.rowBg }}">
+                <td style="box-sizing:border-box;white-space:nowrap;padding:0 8px 0 10px;font-family:'JetBrains Mono',monospace;font-size:11.5px;opacity:.62;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent)">{{ r.id }}</td>
+                <td style="box-sizing:border-box;padding:0 8px;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                  <div style="font-size:13.5px;font-weight:500;line-height:16px">{{ r.name }}</div>
+                  <div style="font-size:11px;opacity:.62;line-height:14px">{{ r.role }}</div>
+                </td>
+                <td style="box-sizing:border-box;padding:0 4px;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent)">
+                  <span style="display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;background:{{ r.chipBg }};color:{{ r.chipFg }}">{{ r.cl }}</span>
+                </td>
+                <td style="box-sizing:border-box;padding:0 8px;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent);border-right:1px solid color-mix(in srgb, currentColor 14%, transparent)">
+                  <sc-if value="{{ r.isMuster }}" hint-placeholder-val="{{ true }}">
+                    <div style="display:flex;align-items:flex-end;gap:1px;height:22px;width:124px;overflow:hidden">
+                      <sc-for list="{{ r.muster }}" as="d" hint-placeholder-count="26">
+                        <span style="width:3px;flex:none;height:{{ d.h }};background:{{ d.color }};display:block"></span>
+                      </sc-for>
+                      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;margin-left:6px;line-height:12px;opacity:.66;flex:none">{{ r.musterNote }}</span>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ r.isLecture }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;white-space:nowrap">
+                      <span style="padding:2px 5px;background:{{ c.accentSoft }};color:{{ c.accent }};font-weight:600">{{ r.lecCount }}</span>
+                      <span style="opacity:.66">{{ r.lecNote }}</span>
+                    </div>
+                  </sc-if>
+                </td>
+                <td style="box-sizing:border-box;padding:0 8px;text-align:right;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent);font-family:'JetBrains Mono',monospace;font-size:12.5px;font-feature-settings:'tnum' 1,'lnum' 1;opacity:.8">{{ r.basic }}</td>
+                <td style="box-sizing:border-box;padding:0 8px;text-align:right;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent);font-family:'JetBrains Mono',monospace;font-size:12.5px;font-feature-settings:'tnum' 1,'lnum' 1;opacity:.8">{{ r.hra }}</td>
+                <td style="box-sizing:border-box;padding:0 8px;text-align:right;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent);font-family:'JetBrains Mono',monospace;font-size:12.5px;font-feature-settings:'tnum' 1,'lnum' 1;opacity:.8">{{ r.allow }}</td>
+                <td style="box-sizing:border-box;padding:0 8px;text-align:right;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent);font-family:'JetBrains Mono',monospace;font-size:12.5px;font-feature-settings:'tnum' 1,'lnum' 1">{{ r.gross }}</td>
+                <td style="box-sizing:border-box;padding:0 8px;text-align:right;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent);font-family:'JetBrains Mono',monospace;font-size:12.5px;font-feature-settings:'tnum' 1,'lnum' 1;color:{{ r.dedColor }}">{{ r.pf }}</td>
+                <td style="box-sizing:border-box;padding:0 8px;text-align:right;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent);font-family:'JetBrains Mono',monospace;font-size:12.5px;font-feature-settings:'tnum' 1,'lnum' 1;color:{{ r.dedColor }}">{{ r.tds }}</td>
+                <td style="box-sizing:border-box;padding:0 8px;text-align:right;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent);border-left:1px solid color-mix(in srgb, currentColor 14%, transparent);font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;font-feature-settings:'tnum' 1,'lnum' 1">{{ r.net }}</td>
+                <td style="box-sizing:border-box;padding:0 8px;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent)">
+                  <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;color:{{ r.stColor }};white-space:nowrap"><span style="font-family:'JetBrains Mono',monospace;font-size:10px">{{ r.stMark }}</span>{{ r.status }}</span>
+                </td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+
+        <div style="flex:1;min-height:0;position:relative;border-bottom:1px solid color-mix(in srgb, currentColor 9%, transparent)">
+          <div style="padding:9px 12px;font-size:11.5px;opacity:.6">204 further staff records · scroll or filter by scale, department, campus</div>
+        </div>
+
+        <table style="width:968px;border-collapse:collapse;tableLayout:fixed;border-top:2px solid color-mix(in srgb, currentColor 55%, transparent)">
+          
+          <tbody><tr style="height:52px;background:{{ c.totalBg }}">
+            <td colspan="4" style="box-sizing:border-box;width:474px;padding:0 8px 0 10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.66">Run total · 214 staff · 5,482 paid days</td>
+            <td colspan="3" style="box-sizing:border-box;width:176px;padding:0 8px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;font-feature-settings:'tnum' 1;opacity:.66">earnings →</td>
+            <td style="box-sizing:border-box;width:76px;padding:0 8px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;font-feature-settings:'tnum' 1">1,42,86,540</td>
+            <td style="box-sizing:border-box;width:52px;padding:0 8px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;font-feature-settings:'tnum' 1;color:{{ c.danger }}">3,85,200</td>
+            <td style="box-sizing:border-box;width:58px;padding:0 8px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;font-feature-settings:'tnum' 1;color:{{ c.danger }}">9,12,440</td>
+            <td style="box-sizing:border-box;width:96px;padding:0 8px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:700;font-feature-settings:'tnum' 1;border-left:1px solid color-mix(in srgb, currentColor 14%, transparent)">1,26,44,180</td>
+            <td style="box-sizing:border-box;width:64px;padding:0 8px;font-size:10.5px;font-weight:500;color:{{ c.danger }}">2 held</td>
+          </tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="height:46px;flex:none;display:flex;align-items:center;gap:14px;padding:0 22px;font-size:11.5px;opacity:.66;border-top:1px solid color-mix(in srgb, currentColor 12%, transparent)">
+      <span>Maker–checker: awaiting <span style="font-weight:600;opacity:1">A. Nambiar</span></span>
+      <span style="opacity:.6">।</span>
+      <span>Every figure Decimal-exact · nothing rounded for display</span>
+      <div style="flex:1"></div>
+      <span style="font-family:'JetBrains Mono',monospace;letter-spacing:.05em">Δ LEDGER BALANCED</span>
+    </div>
+
+    <div style="position:absolute;right:130px;bottom:74px;width:92px;height:92px;border-radius:50%;border:1.5px solid {{ c.brass }};color:{{ c.brass }};display:flex;align-items:center;justify-content:center;transform:rotate(-9deg);opacity:.62;pointer-events:none">
+      <div style="width:78px;height:78px;border-radius:50%;border:1px dashed {{ c.brass }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em">VERIFIED</div>
+        <div style="font-family:'Anek Devanagari','Mukta',sans-serif;font-size:15px;line-height:20px;font-weight:600">मुद्रा</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em">28·08·2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:812},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bahi-light&quot;,&quot;bahi-dark&quot;,&quot;peacock-light&quot;,&quot;peacock-dark&quot;],&quot;default&quot;:&quot;bahi-light&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const P = {
+  bahi: {
+    light: { bg:'#FCFBF8', paper:'#FFFEFC', gutter:'#F6F2EA', railBg:'#231F1A', railInk:'#F2EFE9',
+      ink:'#27221D', accent:'#B63132', accentSoft:'#F3E2DE', action:'#27221D', onAction:'#FCFBF8',
+      brass:'#9C7429', brassSoft:'#F0E7D4', success:'#317A45', danger:'#C22B2A',
+      alt:'rgba(39,34,29,.018)', totalBg:'rgba(39,34,29,.045)' },
+    dark: { bg:'#15120F', paper:'#1B1815', gutter:'#221E19', railBg:'#0E0C0A', railInk:'#EEEDEA',
+      ink:'#EEEDEA', accent:'#D86258', accentSoft:'#3A1D1A', action:'#EEEDEA', onAction:'#15120F',
+      brass:'#DEB464', brassSoft:'#2E2617', success:'#71C791', danger:'#EF675C',
+      alt:'rgba(255,255,255,.017)', totalBg:'rgba(255,255,255,.05)' }
+  },
+  peacock: {
+    light: { bg:'#F7FAFA', paper:'#FFFFFF', gutter:'#EDF4F4', railBg:'#0F2229', railInk:'#E8F1F1',
+      ink:'#18242A', accent:'#00707C', accentSoft:'#D9EEEF', action:'#00636E', onAction:'#FFFFFF',
+      brass:'#8A6A2F', brassSoft:'#F0E8D8', success:'#317A45', danger:'#C22B2A',
+      alt:'rgba(24,36,42,.018)', totalBg:'rgba(24,36,42,.05)' },
+    dark: { bg:'#0D1417', paper:'#131B1F', gutter:'#182227', railBg:'#08100F', railInk:'#E7EDEE',
+      ink:'#E7EDEE', accent:'#28BAC1', accentSoft:'#0E2E30', action:'#28BAC1', onAction:'#08181A',
+      brass:'#DEB464', brassSoft:'#26200F', success:'#71C791', danger:'#EF675C',
+      alt:'rgba(255,255,255,.017)', totalBg:'rgba(255,255,255,.05)' }
+  }
+};
+
+const inr = n => { const s = String(Math.round(n)); if (s.length <= 3) return s;
+  const last = s.slice(-3); let rest = s.slice(0, -3), out = '';
+  while (rest.length > 2) { out = ',' + rest.slice(-2) + out; rest = rest.slice(0, -2); }
+  return rest + out + ',' + last; };
+
+// id, name, role, class, present, lop, basic, allow, tds, status, absentDays, leaveDays, lectures, rate
+const DATA = [
+  ['NAV-0142','Meera Raghunathan','Sr. Teacher — Physics','V',26,0,62400,8000,4200,'filed',[],[]],
+  ['NAV-0088','Arvind Deshpande','Head of Academics','V',26,0,94000,15000,12800,'filed',[],[]],
+  ['NAV-0311','Fatima Qureshi','Teacher — Hindi','V',24,2,48000,5500,1800,'review',[8,9],[]],
+  ['NAV-0503','Rohit Menon','Accounts Executive','12',26,0,41000,4200,1100,'filed',[],[15]],
+  ['NAV-0620','Sunita Bhalla','Transport Coordinator','12',25,1,32000,3600,0,'review',[19],[4,5]],
+  ['NAV-0774','Devraj Singh','Guest Faculty — Robotics','L',0,0,0,0,0,'filed',[],[],42,850],
+  ['NAV-0219','Kavya Iyer','Teacher — Mathematics','V',26,0,54000,6200,2600,'filed',[],[11]],
+  ['NAV-0455','Joseph Mathew','Lab Assistant','12',26,0,28500,3000,0,'filed',[],[]],
+  ['NAV-0810','Ananya Bose','Guest Faculty — Kathak','L',0,0,0,0,0,'review',[],[],18,1200],
+  ['NAV-0367','Harpreet Kaur','Teacher — English','V',20,6,51000,5800,2100,'held',[12,13,14,18,19,20],[]]
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    const variant = this.props.variant || 'bahi-light';
+    const [fam, mode] = variant.split('-');
+    const c = P[fam][mode];
+    const dim = mode === 'dark';
+    const faint = dim ? 'rgba(255,255,255,.20)' : 'rgba(0,0,0,.17)';
+
+    const chip = { 'V': [c.brassSoft, c.brass], '12': [dim ? 'rgba(255,255,255,.07)' : 'rgba(0,0,0,.055)', dim ? 'rgba(255,255,255,.75)' : 'rgba(0,0,0,.68)'], 'L': [c.accentSoft, c.accent] };
+    const st = { filed: [c.brass, '⌾', 'Filed'], review: [dim ? 'rgba(255,255,255,.45)' : 'rgba(0,0,0,.42)', '◌', 'In review'], held: [c.danger, '▣', 'Held'] };
+
+    const rows = DATA.map((d, i) => {
+      const [id, name, role, cl, present, lop, basic, allow, tds, status, absent, leave, lectures, rate] = d;
+      const isLec = cl === 'L';
+      const b = isLec ? 0 : Math.round(basic * (present / 26));
+      const hra = isLec ? 0 : Math.round(basic * 0.4 * (present / 26));
+      const gross = isLec ? lectures * rate : b + hra + allow;
+      const pf = isLec ? 0 : Math.min(1800, Math.round(b * 0.12));
+      const net = gross - pf - tds - (isLec ? 0 : 200);
+
+      const muster = [];
+      for (let day = 1; day <= 26; day++) {
+        const a = absent.indexOf(day) >= 0, l = leave.indexOf(day) >= 0;
+        muster.push({ h: a ? '20px' : l ? '13px' : '8px', color: a ? c.danger : l ? c.brass : faint });
+      }
+      const note = absent.length ? absent.length + 'A' : leave.length ? leave.length + 'L' : '26P';
+
+      return {
+        n: String(i + 1).padStart(2, '0'), id, name, role, cl,
+        isMuster: !isLec, isLecture: isLec,
+        muster, musterNote: note,
+        lecCount: isLec ? lectures + ' lec' : '',
+        lecNote: isLec ? '× ₹' + inr(rate) + '/period' : '',
+        basic: isLec ? '—' : inr(b), hra: isLec ? '—' : inr(hra), allow: isLec ? '—' : inr(allow),
+        gross: inr(gross), pf: pf ? inr(pf) : '—', tds: tds ? inr(tds) : '—', net: inr(net),
+        dedColor: (pf || tds) ? c.danger : (dim ? 'rgba(255,255,255,.3)' : 'rgba(0,0,0,.25)'),
+        stColor: st[status][0], stMark: st[status][1], status: st[status][2],
+        chipBg: chip[cl][0], chipFg: chip[cl][1],
+        rowBg: i % 2 ? c.alt : 'transparent'
+      };
+    });
+
+    const navItems = [
+      ['◫','Overview',''],['▦','Attendance',''],['◷','Leave ledger',''],['₹','Payroll','1'],
+      ['◈','Statutory',''],['⇄','Substitutions','4'],['◎','Appraisal',''],['✉','Helpdesk','7'],['⌸','Recruitment','']
+    ];
+    const nav = navItems.map(([mark, label, badge]) => {
+      const active = label === 'Payroll';
+      return { mark, label, badge,
+        bg: active ? 'rgba(255,255,255,.07)' : 'transparent',
+        fg: active ? c.accent : 'inherit',
+        fw: active ? 600 : 400,
+        rule: active ? ('inset 2px 0 0 ' + c.accent) : 'none' };
+    });
+
+    return { c, rows, nav };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Naveya — Home variants A / B / C</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#15161A;font-family:Figtree,system-ui,sans-serif;color:#EDEEF0}
+  body{display:flex;flex-direction:column}
+  header{flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.10)}
+  .brand{font-weight:700;font-size:14px;letter-spacing:-.01em}
+  .brand span{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8B929B;font-weight:500;margin-left:8px;letter-spacing:.04em}
+  .tabs{display:flex;gap:6px}
+  .tab{appearance:none;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#C9CED5;
+       font:inherit;font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:9px;cursor:pointer;
+       transition:background .12s cubic-bezier(.25,1,.5,1),color .12s cubic-bezier(.25,1,.5,1)}
+  .tab:hover{background:rgba(255,255,255,.10);color:#fff}
+  .tab[aria-selected="true"]{background:#EDEEF0;color:#15161A;border-color:#EDEEF0}
+  .tab:focus-visible{outline:2px solid #7FB3FF;outline-offset:2px}
+  .desc{font-size:12px;color:#8B929B;margin-left:auto;text-align:right;max-width:52ch;line-height:1.45}
+  .stage{flex:1;min-height:0;background:#0B0C0E}
+  iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+  @media (prefers-reduced-motion:reduce){.tab{transition:none}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">Naveya · Employee Home<span>VARIANT COMPARE</span></div>
+    <div class="tabs" role="tablist" aria-label="Design variants">
+      <button class="tab" role="tab" id="t-a" aria-selected="true"  data-src="v2-a.html" data-desc="A · Keka-faithful rail — narrow dark icon+label rail that recedes, thin brand top bar, near-white canvas. Colour lives only in the data.">A · Keka rail</button>
+      <button class="tab" role="tab" id="t-b" aria-selected="false" data-src="v2-b.html" data-desc="B · Light calm chrome — no dark slab. Hairline-separated light sidebar; the active nav item is the only coloured thing in the chrome. Airy and premium.">B · Light chrome</button>
+      <button class="tab" role="tab" id="t-c" aria-selected="false" data-src="v2-c.html" data-desc="C · Compact rail, data as hero — ~60px icon-only rail (labels on hover), minimal top bar, maximum content width with larger rings and charts.">C · Compact rail</button>
+    </div>
+    <div class="desc" id="desc">A · Keka-faithful rail — narrow dark icon+label rail that recedes, thin brand top bar, near-white canvas. Colour lives only in the data.</div>
+  </header>
+  <div class="stage"><iframe id="frame" src="v2-a.html" title="Selected design variant"></iframe></div>
+<script>
+  var tabs = [].slice.call(document.querySelectorAll('.tab'));
+  var frame = document.getElementById('frame');
+  var desc = document.getElementById('desc');
+  function select(tab){
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', String(t === tab)); });
+    frame.src = tab.dataset.src;
+    desc.textContent = tab.dataset.desc;
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ select(t); });
+    t.addEventListener('keydown', function(e){
+      var i = tabs.indexOf(t);
+      if (e.key === 'ArrowRight') { var n = tabs[(i+1) % tabs.length]; n.focus(); select(n); }
+      if (e.key === 'ArrowLeft')  { var p = tabs[(i-1+tabs.length) % tabs.length]; p.focus(); select(p); }
+    });
+  });
+</script>
+</body>
+</html>

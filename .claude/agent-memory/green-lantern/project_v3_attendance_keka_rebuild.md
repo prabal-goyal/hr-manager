@@ -1,0 +1,18 @@
+---
+name: project-v3-attendance-keka-rebuild
+description: design/v3/pages/attendance.jsx rebuilt against real Keka screenshots (design/reference/keka/) — three-card row, tabbed Logs & Requests, row-action ActionMenu, translated column set; kit.jsx gained ActionMenu/Switch/Tabs primitives + a thin-stroke icon pass
+metadata:
+  type: project
+---
+
+Second major pass on `design/v3/pages/attendance.jsx` (first was [[project-v3-attendance-screen]]), triggered by the user rejecting recon-via-description in favour of real captures (see [[feedback-reference-screenshots-not-prose]]). Structure now mirrors Keka's actual attendance page, translated into the v3 Peacock language, with domain translations from `design/reference/keka/README.md`: period pills follow the **academic session back to April** (not a rolling year), "My Team" stats are dropped (Department Head's screen, not an employee's own), "Overtime Requests" becomes "Overtime & extra duty" (exam duty/extra classes/hostel-warden hours, M9), WFH is folded into "on duty" (a teacher's off-site work, not remote work).
+
+**Page composition (top to bottom):** rail+strip+header (unchanged) → three "always now" cards (`StatsCard`/`TimingsCard`/`ActionsCard`, decoupled from whatever period the log below is browsing — they read a fixed `current = MONTHS[1]`) → "Logs & requests" heading + a real `Switch` (24-hour format, functionally wired through `fmtClock`) → `Tabs` (Attendance log / Calendar / Attendance requests / Overtime & extra duty), all four sharing one `monthIdx`/`selectedDay` state so switching tabs keeps context → tab bodies. The old standalone "Shape of the month" bar-strip Card was REMOVED — its role is now split between `TimingsCard` (single-day) and the new Calendar tab (month grid), avoiding a duplicate month-visualization concept per "every element earns its place."
+
+**Register column set translated from Keka 1:1:** `DATE · ATTENDANCE VISUAL · EFFECTIVE HOURS · BREAK TAKEN · GROSS HOURS · ARRIVAL · LOG` — dropped the old separate Day/Status/Out columns; status now surfaces as a `TinyTag` under the date (off/holiday/leave/absent/missing only) and as text+icon in the Attendance Visual cell (a compact `DayTimeline` mini-bar, via a new `compact`/`height` prop on the kit's `DayTimeline`, for present/late/progress days). LOG is the row's `ActionMenu` trigger — Keka's per-row ⋯, present on EVERY row.
+
+**Row-menu compliance gating** (`buildRowActions`) implements `docs/ui-compliance-requirements.md`'s absent/disabled/offered rule for real: every row gets Regularise / Apply on duty / Apply partial day / Request leave / View day logs, with per-item `disabled` + a visible `reason` string (never hidden) driven by day state — non-working day, already-on-leave, today-still-open, or a **locked payroll period**. July is mocked as `locked: true` (its payroll run is already approved/paid) specifically to exercise the "disables everything that would change paid days, naming the lock" rule — August stays open so the four required verification states (normal/weekly-off/leave/today) are all reachable there.
+
+**Requests tab** is sectioned by request TYPE (On duty / Regularisation / Partial day), each its own `Card` with a range subtitle and its own `ActionMenu`; Regularisation is populated with the existing July-3 regularised mock day (reusing `Seal`), the other two use a new lightweight `InfoBanner` (plain tinted notice, no illustration — reserved the bigger illustrated `EmptyState` for whole-tab empties like Overtime).
+
+See [[project-v3-attendance-screen]] for the underlying shape→register→detail pattern (day-detail panel + its own contextual action are UNCHANGED and still coexist with the row menu, per "shortcut vs considered path").
